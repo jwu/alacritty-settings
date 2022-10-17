@@ -25,3 +25,7 @@ TODO
 ## Reference
 
 - [warp](https://www.warp.dev/)
+
+# Other Project
+
+- [nushell](https://github.com/nushell/nushell)
