@@ -11,6 +11,8 @@
 - [alacritty](https://github.com/alacritty/alacritty)
 - [alacritty dracula-color-theme](https://github.com/dracula/alacritty)
 - [clink](https://github.com/chrisant996/clink)
+- [clink-completions](https://github.com/vladimir-kotikov/clink-completions)
+- [git-for-windows](https://github.com/git-for-windows/git)
 - [ConEmu](https://github.com/Maximus5/ConEmu)
 - [cmder](https://github.com/cmderdev/cmder)
 
