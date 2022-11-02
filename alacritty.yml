@@ -493,7 +493,7 @@ colors:
 shell:
   program: cmd.exe
   args:
-    - /s /k "d:/Alacritty/cmder-dev/vendor/init.bat"
+    - /s /k "d:/Alacritty/cmder/vendor/init.bat"
 
 # shell:
 #   program: d:/Alacritty/PowerShell-7.2.5-win-x64/pwsh.exe
