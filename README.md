@@ -14,9 +14,10 @@
 
 - [alacritty](https://github.com/alacritty/alacritty)
 - [alacritty dracula-color-theme](https://github.com/dracula/alacritty)
-- [cmder](https://github.com/cmderdev/cmder)
 - [clink](https://github.com/chrisant996/clink)
 - [clink-completions](https://github.com/vladimir-kotikov/clink-completions)
+- [starship](https://github.com/starship/starship)
+- [cmder](https://github.com/cmderdev/cmder)
 - [ConEmu](https://github.com/Maximus5/ConEmu)
 - [git-for-windows](https://github.com/git-for-windows/git)
 
