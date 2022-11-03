@@ -1,0 +1,89 @@
+# name: Enable automatic suggestions
+# type: boolean
+autosuggest.enable = true
+
+# name: Argument color
+# type: color
+color.arg = bold
+
+# name: Argument info color
+# type: color
+color.arginfo = yellow
+
+# name: Shell command completions
+# type: color
+color.cmd = bold
+
+# name: Color for < and > redirection symbols
+# type: color
+color.cmdredir = bold
+
+# name: Color for & and | command separators
+# type: color
+color.cmdsep = bold
+
+# name: Color for comment row
+# type: color
+color.comment_row = bright white on cyan
+
+# name: Description completion color
+# type: color
+color.description = bright cyan
+
+# name: Doskey completions
+# type: color
+color.doskey = bold cyan
+
+# name: Filtered completion color
+# type: color
+color.filtered = bold
+
+# name: Flag color
+# type: color
+color.flag = default
+
+# name: Color for preferred branch completions
+# type: color
+color.git.star = bright green
+
+# name: For user-interaction prompts
+# type: color
+color.interact = bold
+
+# name: Message area color
+# type: color
+color.message = default
+
+# name: Color for suggestion text
+# type: color
+color.suggestion = bright black
+
+# name: Unexpected argument color
+# type: color
+color.unexpected = default
+
+# name: Color for yarn run local module
+# type: color
+color.yarn.module = bright green
+
+# name: Color for yarn run project.json script
+# type: color
+color.yarn.script = bright blue
+
+# name: Sets how command history expansion is applied
+# type: enum
+# options: off,on,not_squoted,not_dquoted,not_quoted
+history.expand_mode = not_dquoted
+
+# name: Skip adding lines prefixed with whitespace
+# type: boolean
+history.ignore_space = False
+
+# name: The number of history lines to save
+# type: integer
+history.max_lines = 10000
+
+# name: Share history between instances
+# type: boolean
+history.shared = True
+

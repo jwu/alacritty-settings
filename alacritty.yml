@@ -117,8 +117,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Consolas
-    # family: DejaVu Sans Mono for Powerline
+    # family: Consolas
+    family: FuraMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -493,7 +493,7 @@ colors:
 shell:
   program: cmd.exe
   args:
-    - /s /k "d:/Alacritty/cmder/vendor/init.bat"
+    - /s /k "e:\Alacritty\settings\init.bat"
 
 # shell:
 #   program: d:/Alacritty/PowerShell-7.2.5-win-x64/pwsh.exe
