@@ -1,3 +1,6 @@
 .exvim/
+installs/
+settings/vendor/
 clink_history
 clink.log
+*.exe
