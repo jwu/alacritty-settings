@@ -1,6 +1,6 @@
 # name: Enable automatic suggestions
 # type: boolean
-autosuggest.enable = true
+autosuggest.enable = True
 
 # name: Argument color
 # type: color

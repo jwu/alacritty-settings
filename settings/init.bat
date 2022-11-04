@@ -33,6 +33,9 @@ if "%PROCESSOR_ARCHITECTURE%"=="x86" (
 
 "%AL_VENDOR%\clink\clink_%CLINK_ARCH%.exe" inject --quiet --profile "%AL_VENDOR%\clink_profile" --scripts "%AL_SETTINGS%"
 
+:: NOTE: clink_settings autosuggest.enable not working, we have to explicit call it here
+"%AL_VENDOR%\clink\clink_%CLINK_ARCH%.exe" set autosuggest.enable true > NUL
+
 :: prepare git-for-windows
 :: ========================================
 
