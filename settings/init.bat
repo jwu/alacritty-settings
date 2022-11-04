@@ -31,6 +31,11 @@ if "%PROCESSOR_ARCHITECTURE%"=="x86" (
   set CLINK_ARCH=x64
 )
 
+:: set starship config path before clink
+:: ========================================
+
+set "STARSHIP_CONFIG=%AL_SETTINGS%\starship.toml"
+
 :: run clink
 :: ========================================
 
