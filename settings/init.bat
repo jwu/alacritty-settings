@@ -22,7 +22,7 @@ if not defined AL_ROOT (
 if "%AL_ROOT:~-1%" == "\" set "AL_ROOT=%AL_ROOT:~0,-1%"
 
 set "AL_SETTINGS=%AL_ROOT%\settings"
-set "AL_VENDOR=%AL_ROOT%\settings\vendor"
+set "AL_VENDOR=%AL_ROOT%\vendor"
 
 :: pick right version of clink
 if "%PROCESSOR_ARCHITECTURE%"=="x86" (

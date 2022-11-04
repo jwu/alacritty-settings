@@ -1,8 +1,3 @@
--- TODO:
--- use starship for prompt
--- local starship_exe = clink.get_env('AL_VENDOR')..'/starship'
--- load(io.popen(starship_exe..' init cmd'):read("*a"))()
-
 -- All of the below was 'borrowed' from https://github.com/AmrEldib/cmder-powerline-prompt
 
 --- REQUIRED. config_prompt_type is whether the displayed prompt is the full path or only the folder name
