@@ -9,6 +9,9 @@ set __INIT_START__=%time%
 set DBG_VAR=0
 set DBG_INIT_TIME=0
 
+:: cmd config
+set LANG=en_US.utf8
+
 :: find root dir
 if not defined AL_ROOT (
   for /f "delims=" %%i in ("%~dp0\..") do (
@@ -86,6 +89,7 @@ set __INIT_END__=%time%
 :: debug variables
 if %DBG_VAR% gtr 0 (
   echo PROCESSOR_ARCHITECTURE = %PROCESSOR_ARCHITECTURE%
+  echo LANG = %LANG%
   echo AL_ROOT = %AL_ROOT%
   echo AL_SETTINGS = %AL_SETTINGS%
   echo AL_VENDOR = %AL_VENDOR%
