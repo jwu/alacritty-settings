@@ -1,3 +1,10 @@
+-- update console title
+----------------------------------------
+
+function starship_preprompt_user_func(prompt)
+  console.settitle(os.getcwd())
+end
+
 -- use starship for prompt
 ----------------------------------------
 
