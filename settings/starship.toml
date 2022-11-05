@@ -2,7 +2,12 @@
 # "$schema" = 'https://starship.rs/config-schema.json'
 
 # Don't print a new line at the start of the prompt
+format = """
+$directory$git_branch$git_status
+$character"""
+
 add_newline = false
+scan_timeout = 10
 
 [character]
 success_symbol = "[❯](bold green)"
@@ -13,20 +18,11 @@ truncation_length = 100
 truncate_to_repo = false
 style = "bold cyan"
 
-[package]
-disabled = true
-
 [git_branch]
 always_show_remote = true
 symbol = " "
 style = "bold purple"
 format = "on [$symbol$branch -> $remote_name]($style) "
-
-[git_commit]
-disabled = true
-
-[git_state]
-disabled = true
 
 [git_status]
 style = "bold yellow"
