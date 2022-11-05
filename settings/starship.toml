@@ -29,11 +29,12 @@ disabled = true
 disabled = true
 
 [git_status]
-style = "bold red"
+style = "bold yellow"
 untracked = ""
 modified = '*'
 deleted = '-'
-ahead = "⇡${count}"
-behind = "⇣${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-format = '([$diverged\[$conflicted$stashed$deleted$renamed$staged$modified\]]($style) )'
+conflicted = 'x'
+ahead = "[\ue353${count}](bold green)"
+behind = "[\ue340${count}](bold red)"
+diverged = "[⇕\ue353${ahead_count}\ue340${behind_count}](bold yellow)"
+format = '([\[$conflicted$stashed$deleted$renamed$staged$modified\]]($style) $ahead_behind )'
