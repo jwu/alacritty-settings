@@ -24,24 +24,12 @@ if "%AL_ROOT:~-1%" == "\" set "AL_ROOT=%AL_ROOT:~0,-1%"
 set "AL_SETTINGS=%AL_ROOT%\settings"
 set "AL_VENDOR=%AL_ROOT%\vendor"
 
-:: pick right version of clink
-if "%PROCESSOR_ARCHITECTURE%"=="x86" (
-  set CLINK_ARCH=x86
-) else (
-  set CLINK_ARCH=x64
-)
-
-:: set starship config path before clink
+:: add aliases
 :: ========================================
 
-set "STARSHIP_CONFIG=%AL_SETTINGS%\starship.toml"
+call "%AL_SETTINGS%\cmds\aliases.cmd"
 
-:: run clink
-:: ========================================
-
-"%AL_VENDOR%\clink\clink_%CLINK_ARCH%.exe" inject --quiet --profile "%AL_SETTINGS%\clink_profile" --scripts "%AL_SETTINGS%"
-
-:: prepare git-for-windows
+:: add git-for-windows to environment path
 :: ========================================
 
 if exist "%AL_VENDOR%\git_portable" (
@@ -78,10 +66,22 @@ echo Error: git not found!
 
 :END_CONFIG_GIT
 
-:: aliases
+:: set starship config path before clink
 :: ========================================
 
-call "%AL_SETTINGS%\cmds\aliases.cmd"
+set "STARSHIP_CONFIG=%AL_SETTINGS%\starship.toml"
+
+:: inject clink
+:: ========================================
+
+:: pick right version of clink
+if "%PROCESSOR_ARCHITECTURE%"=="x86" (
+  set CLINK_ARCH=x86
+) else (
+  set CLINK_ARCH=x64
+)
+
+"%AL_VENDOR%\clink\clink_%CLINK_ARCH%.exe" inject --quiet --profile "%AL_SETTINGS%\clink_profile" --scripts "%AL_SETTINGS%"
 
 :: init end
 :: ========================================
