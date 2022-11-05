@@ -10,7 +10,7 @@ add_newline = false
 scan_timeout = 10
 
 [character]
-success_symbol = "[❯](bold green)"
+success_symbol = "[❯](bold #808080)"
 error_symbol = "[❯](bold red)"
 
 [directory]
@@ -22,7 +22,7 @@ style = "bold cyan"
 always_show_remote = true
 symbol = " "
 style = "bold purple"
-format = "on [$symbol$branch -> $remote_name]($style) "
+format = "on [$symbol$branch( \ufc32 $remote_name)]($style) "
 
 [git_status]
 style = "bold yellow"
