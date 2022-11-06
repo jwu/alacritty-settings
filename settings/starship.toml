@@ -3,7 +3,7 @@
 
 # Don't print a new line at the start of the prompt
 format = """
-$directory$git_branch$git_status
+$directory$git_branch$git_commit$git_status
 $character"""
 
 scan_timeout = 100
@@ -35,3 +35,9 @@ ahead = "[\ue353${count}](bold green)"
 behind = "[\ue340${count}](bold red)"
 diverged = "[⇕\ue353${ahead_count}\ue340${behind_count}](bold yellow)"
 format = '($ahead_behind )([\[$conflicted$stashed$deleted$renamed$staged$modified\]]($style) )'
+
+[git_commit]
+format = "([$tag]($style) )"
+tag_disabled = false
+only_detached = false
+tag_symbol = "\uf02b "
