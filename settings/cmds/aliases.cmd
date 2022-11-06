@@ -7,6 +7,7 @@
 e.=explorer .
 gl=git log --oneline --all --graph --decorate  $*
 ls=ls --show-control-chars -F --color $*
+lsd=lsd --config-file %AL_SETTINGS%\lsd.yaml $*
 pwd=cd
 clear=cls
 vi=vim $*

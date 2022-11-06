@@ -18,12 +18,17 @@ TODO
 ## Reference
 
 - [alacritty](https://github.com/alacritty/alacritty)
-- [alacritty dracula-color-theme](https://github.com/dracula/alacritty)
+  - [alacritty dracula-color-theme](https://github.com/dracula/alacritty)
+  - [nerdfonts](https://www.nerdfonts.com/)
 - [clink](https://github.com/chrisant996/clink)
-- [clink-completions](https://github.com/vladimir-kotikov/clink-completions)
-- [git-for-windows](https://github.com/git-for-windows/git)
+  - [clink-completions](https://github.com/vladimir-kotikov/clink-completions)
+  - [clink-fzf](https://github.com/chrisant996/clink-fzf)
+  - [clink-zoxide](https://github.com/shunsambongi/clink-zoxide)
 - [starship](https://github.com/starship/starship)
-- [nerdfonts](https://www.nerdfonts.com/)
+- utils
+  - [git-for-windows](https://github.com/git-for-windows/git)
+  - [fzf](https://github.com/junegunn/fzf)
+  - [zoxide](https://github.com/ajeetdsouza/zoxide)
 
 ## Other Project
 
@@ -31,3 +36,4 @@ TODO
 - [nushell](https://github.com/nushell/nushell)
 - [cmder](https://github.com/cmderdev/cmder)
 - [ConEmu](https://github.com/Maximus5/ConEmu)
+- [zellij](https://zellij.dev/)

@@ -1,0 +1,7 @@
+import:
+  - e:\Alacritty\settings\alacritty.yml
+
+shell:
+  program: cmd.exe
+  args:
+    - /s /k "e:\Alacritty\settings\init.bat"
