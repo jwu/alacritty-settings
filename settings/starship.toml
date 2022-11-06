@@ -6,8 +6,9 @@ format = """
 $directory$git_branch$git_status
 $character"""
 
+scan_timeout = 100
+command_timeout = 500
 add_newline = false
-scan_timeout = 10
 
 [character]
 success_symbol = "[❯](bold #808080)"

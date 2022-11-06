@@ -80,7 +80,7 @@ if "%PROCESSOR_ARCHITECTURE%"=="x86" (
   set CLINK_ARCH=x64
 )
 
-"%AL_VENDOR%\clink\clink_%CLINK_ARCH%.exe" inject --quiet --profile "%AL_SETTINGS%\clink_profile" --scripts "%AL_SETTINGS%"
+"%AL_VENDOR%\clink\clink_%CLINK_ARCH%.exe" inject --quiet --profile "%AL_SETTINGS%\clink_profile" --scripts "%AL_SETTINGS%\clink_scripts"
 
 :: init end
 :: ========================================

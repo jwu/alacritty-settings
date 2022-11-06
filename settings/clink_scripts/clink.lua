@@ -2,7 +2,15 @@
 ----------------------------------------
 
 function starship_preprompt_user_func(prompt)
-  console.settitle(os.getcwd())
+  local cwd = os.getcwd()
+  local prj = path.getname(cwd)
+  if prj == '' then
+    prj = ''
+  else
+    prj = '['..prj..'] '
+  end
+
+  console.settitle(prj..cwd)
 end
 
 -- use starship for prompt

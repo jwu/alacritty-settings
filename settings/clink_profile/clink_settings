@@ -86,4 +86,3 @@ history.max_lines = 10000
 # name: Share history between instances
 # type: boolean
 history.shared = True
-
