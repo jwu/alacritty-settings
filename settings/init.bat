@@ -28,6 +28,13 @@ set "AL_VENDOR=%AL_ROOT%\vendor"
 
 call "%AL_SETTINGS%\cmds\aliases.cmd"
 
+:: add vendor\bin\ to environment path
+:: ========================================
+
+if exist "%AL_VENDOR%\bin" (
+  set "PATH=%PATH%;%AL_VENDOR%\bin"
+)
+
 :: add git-for-windows to environment path
 :: ========================================
 
@@ -40,17 +47,17 @@ if exist "%AL_VENDOR%\git_portable" (
 
 :CONFIG_GIT
 
-:: add git to environment path
+:: add {git}\cmd\ to environment path
 if exist "%AL_GIT_ROOT%\cmd\git.exe" (
   set "PATH=%PATH%;%AL_GIT_ROOT%\cmd"
 )
 
-:: add usr\bin to environment path
+:: add {git}\usr\bin to environment path
 if exist "%AL_GIT_ROOT%\usr\bin" (
   set "PATH=%PATH%;%AL_GIT_ROOT%\usr\bin"
 )
 
-:: add mingw to environment path
+:: add {git}\mingw{??}\bin to environment path
 if exist "%AL_GIT_ROOT%\mingw32" (
   set "PATH=%PATH%;%AL_GIT_ROOT%\mingw32\bin"
 ) else if exist "%AL_GIT_ROOT%\mingw64" (

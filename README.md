@@ -7,11 +7,13 @@
 1. `git clone git@github.com:jwu/alacritty-settings.git ${YOUR_ALACRITTY_PATH}`
 1. install [alacritty](https://github.com/alacritty/alacritty/releases) to `${YOUR_ALACRITTY_PATH}`
 1. install [FiraMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraMono.zip)
-1. copy `${YOUR_ALACRITTY_PATH}/alacrity.yml` to `~/AppData/Roaming/alacritty/alacritty.yml`
+1. copy `${YOUR_ALACRITTY_PATH}/alacrity.default.yml` to `~/AppData/Roaming/alacritty/alacritty.yml`
 1. unzip [clink](https://github.com/chrisant996/clink/releases) to `${YOUR_ALACRITTY_PATH}/vendor/clink`
 1. unzip [clink-completions](https://github.com/vladimir-kotikov/clink-completions/releases) to `${YOUR_ALACRITTY_PATH}/vendor/clink_completions`
 1. unzip [git-for-windows](https://github.com/git-for-windows/git/releases) to `${YOUR_ALACRITTY_PATH}/vendor/git_portable`
 1. unzip [starship](https://github.com/starship/starship/releases) to `${YOUR_ALACRITTY_PATH}/vendor`
+1. unzip [fzf](https://github.com/junegunn/fzf/releases) to `${YOUR_ALACRITTY_PATH}/bin`
+1. unzip [zoxide](https://github.com/ajeetdsouza/zoxide/releases) to `${YOUR_ALACRITTY_PATH}/bin`
 
 ## Mac/Linux Setup
 
@@ -27,8 +29,8 @@ TODO
   - [clink-fzf](https://github.com/chrisant996/clink-fzf)
   - [clink-zoxide](https://github.com/shunsambongi/clink-zoxide)
 - [starship](https://github.com/starship/starship)
+- [git](https://github.com/git-for-windows/git)
 - utils
-  - [git](https://github.com/git-for-windows/git)
   - [z](https://github.com/ajeetdsouza/zoxide)
   - [fzf](https://github.com/junegunn/fzf)
   - [fd](https://github.com/sharkdp/fd)
