@@ -26,9 +26,18 @@ TODO
   - [clink-zoxide](https://github.com/shunsambongi/clink-zoxide)
 - [starship](https://github.com/starship/starship)
 - utils
-  - [git-for-windows](https://github.com/git-for-windows/git)
+  - [git](https://github.com/git-for-windows/git)
+  - [z](https://github.com/ajeetdsouza/zoxide)
   - [fzf](https://github.com/junegunn/fzf)
-  - [zoxide](https://github.com/ajeetdsouza/zoxide)
+  - [fd](https://github.com/sharkdp/fd)
+  - [bat](https://github.com/sharkdp/bat)
+  - [s](https://github.com/zquestz/s)
+  - [hyperfine](https://github.com/sharkdp/hyperfine)
+  - [lsd](https://github.com/Peltoche/lsd)
+  - [procs](https://github.com/dalance/procs)
+  - [rg](https://github.com/BurntSushi/ripgrep)
+  - [btm](https://github.com/ClementTsang/bottom)
+  - [gres](https://github.com/pemistahl/grex)
 
 ## Other Project
 
