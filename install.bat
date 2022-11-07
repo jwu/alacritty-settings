@@ -1,5 +1,8 @@
+@echo off
+:: ========================================
+
 :: find root dir
-for /f "delims=" %%i in ("%~dp0\..") do (
+for /f "delims=" %%i in ("%~dp0") do (
   set "AL_ROOT=%%~fi"
 )
 :: remove trailing '\' from %AL_ROOT%
@@ -10,9 +13,6 @@ set "AL_VENDOR=%AL_ROOT%\vendor"
 
 :: install alacritty
 :: ========================================
-
-:: download alacritty.exe
-curl -L -o alacritty.exe https://github.com/alacritty/alacritty/releases/download/v0.11.0/Alacritty-v0.11.0-portable.exe
 
 :: create alacritty directory
 if not exist "%APPDATA%\alacritty" (
@@ -30,13 +30,6 @@ echo   program: cmd.exe
 echo   args:
 echo     - /s /k "%AL_SETTINGS%\init.bat"
 ) > %APPDATA%\alacritty\alacritty.yml
-
-:: create vendor directory
-:: ========================================
-
-if not exist "%AL_VENDOR%" (
-  mkdir "%AL_VENDOR%"
-)
 
 :: install nerdfonts FiraMono
 :: ========================================

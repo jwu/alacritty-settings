@@ -3,11 +3,11 @@
 ;= %SystemRoot%\system32\doskey /listsize=1000 /macrofile=%0%
 ;= rem In batch mode, jump to the end of the file
 ;= goto:eof
-;= Add aliases below here
+;============ Add aliases below here ============
 e.=explorer .
-gl=git log --oneline --all --graph --decorate  $*
 ls=ls --show-control-chars -F --color $*
-lsd=lsd --config-file %AL_SETTINGS%\lsd.yaml $*
 pwd=cd
 clear=cls
 vi=vim $*
+gl=git log --oneline --all --graph --decorate  $*
+lsd=lsd --config-file %AL_SETTINGS%\lsd.yaml $*
