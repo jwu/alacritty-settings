@@ -1,5 +1,7 @@
 # Alacritty Settings
 
+<img src="./imgs/preview.png" alt="preview" style="width:600px;"/>
+
 ## Windows Setup
 
 1. `git clone git@github.com:jwu/alacritty-settings.git ${YOUR_ALACRITTY_PATH}`
@@ -41,6 +43,7 @@ TODO
   - [delta](https://github.com/dandavison/delta)
   - [dust](https://github.com/bootandy/dust)
   - [navi](https://github.com/denisidoro/navi)
+  - [glow](https://github.com/charmbracelet/glow)
 
 ## Other Project
 

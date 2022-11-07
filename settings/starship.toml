@@ -27,14 +27,14 @@ format = "on [$symbol$branch( \ufc32 $remote_name)]($style) "
 
 [git_status]
 style = "bold yellow"
-untracked = ""
+untracked = "?"
 modified = '*'
 deleted = '-'
 conflicted = 'x'
 ahead = "[\ue353${count}](bold green)"
 behind = "[\ue340${count}](bold red)"
 diverged = "[⇕\ue353${ahead_count}\ue340${behind_count}](bold yellow)"
-format = '($ahead_behind )([\[$conflicted$stashed$deleted$renamed$staged$modified\]]($style) )'
+format = '($ahead_behind )([\[$conflicted$stashed$untracked$deleted$renamed$staged$modified\]]($style) )'
 
 [git_commit]
 format = "([$tag]($style) )"
