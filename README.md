@@ -37,7 +37,10 @@ TODO
   - [procs](https://github.com/dalance/procs)
   - [rg](https://github.com/BurntSushi/ripgrep)
   - [btm](https://github.com/ClementTsang/bottom)
-  - [gres](https://github.com/pemistahl/grex)
+  - [grex](https://github.com/pemistahl/grex)
+  - [delta](https://github.com/dandavison/delta)
+  - [dust](https://github.com/bootandy/dust)
+  - [navi](https://github.com/denisidoro/navi)
 
 ## Other Project
 
