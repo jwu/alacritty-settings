@@ -7,97 +7,196 @@ set "FONT_VER=v2.2.2"
 set "STARSHIP_VER=v1.11.0"
 set "CLINK_URL=https://github.com/chrisant996/clink/releases/download/v1.4.0/clink.1.4.0.74a8d2.zip"
 set "CLINK_COMP_VER=0.4.1"
-
-:: DEBUG
-:: goto:UPDATE_CLINK
+set "GIT_VER=2.38.1"
+set "FZF_VER=0.34.0"
+set "Z_VER=0.8.3"
 
 :: find root dir
 for /f "delims=" %%i in ("%~dp0") do (
-  set "AL_ROOT=%%~fi"
+  set "MY_ROOT=%%~fi"
 )
-:: remove trailing '\' from %AL_ROOT%
-if "%AL_ROOT:~-1%" == "\" set "AL_ROOT=%AL_ROOT:~0,-1%"
+:: remove trailing '\' from %MY_ROOT%
+if "%MY_ROOT:~-1%" == "\" set "MY_ROOT=%MY_ROOT:~0,-1%"
+set "MY_VENDOR=%MY_ROOT%\vendor"
 
-set "AL_SETTINGS=%AL_ROOT%\settings"
-set "AL_VENDOR=%AL_ROOT%\vendor"
+:: create vendor directory
+if not exist "%MY_VENDOR%" (
+  echo create dir %MY_VENDOR%
+  mkdir "%MY_VENDOR%"
+)
 
+:: ========================================
+:: DEBUG
+:: ========================================
+
+call :UPDATE_ALACRITTY
+call :UPDATE_NERD_FONT
+call :UPDATE_STARSHIP
+call :UPDATE_CLINK
+call :UPDATE_GIT
+call :UPDATE_FZF
+call :UPDATE_Z
+goto:END
+
+:: ========================================
 :UPDATE_ALACRITTY
-:: download alacritty.exe
 :: ========================================
 
 echo download alacritty.exe
-curl -L -o alacritty.exe https://github.com/alacritty/alacritty/releases/download/%AL_VER%/Alacritty-%AL_VER%-portable.exe
+curl https://github.com/alacritty/alacritty/releases/download/%AL_VER%/Alacritty-%AL_VER%-portable.exe ^
+  -L --progress-bar ^
+  -o alacritty.exe
+goto:eof
 
-:: create vendor directory
 :: ========================================
-
-if not exist "%AL_VENDOR%" (
-  echo create dir %AL_VENDOR%
-  mkdir "%AL_VENDOR%"
-)
-
 :UPDATE_NERD_FONT
-:: download NerdFont FiraMono
 :: ========================================
 
-set "NERD_FONT=%AL_VENDOR%\NerdFont"
-if not exist "%NERD_FONT%" (
-  echo create dir %NERD_FONT%
-  mkdir "%NERD_FONT%"
+:: create NerdFont directory
+set "MY_NERD_FONT=%MY_VENDOR%\NerdFont"
+if not exist "%MY_NERD_FONT%" (
+  echo create dir %MY_NERD_FONT%
+  mkdir "%MY_NERD_FONT%"
 )
 
-if not exist "%NERD_FONT%\FiraMono" (
-  echo create dir %NERD_FONT%\FiraMono
-  mkdir "%NERD_FONT%\FiraMono"
+:: create NerdFont\FiraMono directory
+if not exist "%MY_NERD_FONT%\FiraMono" (
+  echo create dir %MY_NERD_FONT%\FiraMono
+  mkdir "%MY_NERD_FONT%\FiraMono"
 )
 
 echo download NerdFont:FiraMono
-curl -L -o %NERD_FONT%\FiraMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/%FONT_VER%/FiraMono.zip
+curl https://github.com/ryanoasis/nerd-fonts/releases/download/%FONT_VER%/FiraMono.zip ^
+  -L --progress-bar ^
+  -o %MY_NERD_FONT%\FiraMono.zip
 
 echo extract FiraMono.zip to vendor\NerdFont\FiraMono\
-tar -xf %NERD_FONT%\FiraMono.zip -C %NERD_FONT%\FiraMono\
+tar -xf %MY_NERD_FONT%\FiraMono.zip -C %MY_NERD_FONT%\FiraMono\
+del %MY_NERD_FONT%\FiraMono.zip
 
 echo install FiraMono fonts
-call settings\cmds\addfonts.cmd %NERD_FONT%\FiraMono\
+call settings\cmds\addfonts.cmd %MY_NERD_FONT%\FiraMono\
+goto:eof
 
+:: ========================================
 :UPDATE_STARSHIP
-:: download starship
 :: ========================================
 
 echo download starship
-curl -L -o %AL_VENDOR%\starship.zip https://github.com/starship/starship/releases/download/%STARSHIP_VER%/starship-aarch64-pc-windows-msvc.zip
+curl https://github.com/starship/starship/releases/download/%STARSHIP_VER%/starship-aarch64-pc-windows-msvc.zip ^
+  -L --progress-bar ^
+  -o %MY_VENDOR%\starship.zip
+
 
 echo extract starship.zip to vendor\starship.exe
-tar -xf %AL_VENDOR%\starship.zip -C %AL_VENDOR%
+tar -xf %MY_VENDOR%\starship.zip -C %MY_VENDOR%
+del %MY_VENDOR%\starship.zip
+goto:eof
 
+:: ========================================
 :UPDATE_CLINK
-:: download clink
 :: ========================================
 
-:: clink
-if not exist "%AL_VENDOR%\clink" (
-  echo create dir %AL_VENDOR%\clink
-  mkdir "%AL_VENDOR%\clink"
+:: create vendor\clink directory
+if not exist "%MY_VENDOR%\clink" (
+  echo create dir %MY_VENDOR%\clink
+  mkdir "%MY_VENDOR%\clink"
 )
 
 echo download clink
-curl -L -o %AL_VENDOR%\clink.zip %CLINK_URL%
+curl %CLINK_URL% ^
+  -L --progress-bar ^
+  -o %MY_VENDOR%\clink.zip
 
 echo extract clink.zip to vendor\clink
-tar -xf %AL_VENDOR%\clink.zip -C %AL_VENDOR%\clink
+tar -xf %MY_VENDOR%\clink.zip -C %MY_VENDOR%\clink
+del %MY_VENDOR%\clink.zip
 
-:: clink-completions
-:: if not exist "%AL_VENDOR%\clink-completions" (
-::   echo create dir %AL_VENDOR%\clink-completions
-::   mkdir "%AL_VENDOR%\clink-completions"
+:: create clink-completions directory
+:: if not exist "%MY_VENDOR%\clink-completions" (
+::   echo create dir %MY_VENDOR%\clink-completions
+::   mkdir "%MY_VENDOR%\clink-completions"
 :: )
 
 echo download clink-completions
-curl -L -o %AL_VENDOR%\clink-completions.zip https://github.com/vladimir-kotikov/clink-completions/archive/refs/tags/%CLINK_COMP_VER%.zip
+curl https://github.com/vladimir-kotikov/clink-completions/archive/refs/tags/%CLINK_COMP_VER%.zip ^
+  -L --progress-bar ^
+  -o %MY_VENDOR%\clink-completions.zip
 
 echo extract clink-completions.zip to vendor\clink-completions
-tar -xf %AL_VENDOR%\clink-completions.zip -C %AL_VENDOR%\
+tar -xf %MY_VENDOR%\clink-completions.zip -C %MY_VENDOR%\
+del %MY_VENDOR%\clink-completions.zip
 
-cd %AL_VENDOR%
+cd %MY_VENDOR%
 ren clink-completions-%CLINK_COMP_VER% clink-completions
 cd ..
+goto:eof
+
+:: ========================================
+:UPDATE_GIT
+:: ========================================
+
+echo download git
+curl https://github.com/git-for-windows/git/releases/download/v%GIT_VER%.windows.1/MinGit-%GIT_VER%-64-bit.zip ^
+  -L --progress-bar ^
+  -o %MY_VENDOR%\git.zip
+
+:: create vendor\git directory
+if not exist "%MY_VENDOR%\git" (
+  echo create dir %MY_VENDOR%\git
+  mkdir "%MY_VENDOR%\git"
+)
+
+echo extract git.zip to vendor\git
+tar -xf %MY_VENDOR%\git.zip -C %MY_VENDOR%\git
+del %MY_VENDOR%\git.zip
+
+goto:eof
+
+:: ========================================
+:UPDATE_FZF
+:: ========================================
+
+echo download fzf
+curl https://github.com/junegunn/fzf/releases/download/%FZF_VER%/fzf-%FZF_VER%-windows_amd64.zip ^
+  -L --progress-bar ^
+  -o %MY_VENDOR%\fzf.zip
+
+:: create vendor\bin directory
+if not exist "%MY_VENDOR%\bin" (
+  echo create dir %MY_VENDOR%\bin
+  mkdir "%MY_VENDOR%\bin"
+)
+
+echo extract fzf.zip to vendor\bin
+tar -xf %MY_VENDOR%\fzf.zip -C %MY_VENDOR%\bin
+del %MY_VENDOR%\fzf.zip
+
+goto:eof
+
+:: ========================================
+:UPDATE_Z
+:: ========================================
+
+echo download zoxide
+curl https://github.com/ajeetdsouza/zoxide/releases/download/v%Z_VER%/zoxide-%Z_VER%-x86_64-pc-windows-msvc.zip ^
+  -L --progress-bar ^
+  -o %MY_VENDOR%\zoxide.zip
+
+:: create vendor\bin directory
+if not exist "%MY_VENDOR%\bin" (
+  echo create dir %MY_VENDOR%\bin
+  mkdir "%MY_VENDOR%\bin"
+)
+
+echo extract zoxide.zip to vendor\bin
+tar -xf %MY_VENDOR%\zoxide.zip -C %MY_VENDOR%\bin
+del %MY_VENDOR%\zoxide.zip
+
+goto:eof
+
+:: ========================================
+:END
+:: ========================================
+
+echo Done!
