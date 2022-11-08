@@ -77,6 +77,11 @@ echo Error: git not found!
 
 set "STARSHIP_CONFIG=%AL_SETTINGS%\starship.toml"
 
+:: set fzf option before clink
+:: ========================================
+
+set "FZF_COMPLETE_OPTS=-e"
+
 :: inject clink
 :: ========================================
 
