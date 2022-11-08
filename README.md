@@ -10,10 +10,10 @@
 1. copy `${YOUR_ALACRITTY_PATH}/alacrity.default.yml` to `~/AppData/Roaming/alacritty/alacritty.yml`
 1. unzip [clink](https://github.com/chrisant996/clink/releases) to `${YOUR_ALACRITTY_PATH}/vendor/clink`
 1. unzip [clink-completions](https://github.com/vladimir-kotikov/clink-completions/releases) to `${YOUR_ALACRITTY_PATH}/vendor/clink_completions`
-1. unzip [git-for-windows](https://github.com/git-for-windows/git/releases) to `${YOUR_ALACRITTY_PATH}/vendor/git_portable`
+1. unzip [git-for-windows](https://github.com/git-for-windows/git/releases) to `${YOUR_ALACRITTY_PATH}/vendor/git-portable`
 1. unzip [starship](https://github.com/starship/starship/releases) to `${YOUR_ALACRITTY_PATH}/vendor`
-1. unzip [fzf](https://github.com/junegunn/fzf/releases) to `${YOUR_ALACRITTY_PATH}/bin`
-1. unzip [zoxide](https://github.com/ajeetdsouza/zoxide/releases) to `${YOUR_ALACRITTY_PATH}/bin`
+1. unzip [fzf](https://github.com/junegunn/fzf/releases) to `${YOUR_ALACRITTY_PATH}/vendor/bin`
+1. unzip [zoxide](https://github.com/ajeetdsouza/zoxide/releases) to `${YOUR_ALACRITTY_PATH}/vendor/bin`
 
 ## Mac/Linux Setup
 
@@ -24,12 +24,13 @@ TODO
 - [alacritty](https://github.com/alacritty/alacritty)
   - [alacritty dracula-color-theme](https://github.com/dracula/alacritty)
   - [nerdfonts](https://www.nerdfonts.com/)
-- [clink](https://github.com/chrisant996/clink)
-  - [clink-completions](https://github.com/vladimir-kotikov/clink-completions)
-  - [clink-fzf](https://github.com/chrisant996/clink-fzf)
-  - [clink-zoxide](https://github.com/shunsambongi/clink-zoxide)
-- [starship](https://github.com/starship/starship)
-- [git](https://github.com/git-for-windows/git)
+- vendor
+  - [clink](https://github.com/chrisant996/clink)
+    - [clink-completions](https://github.com/vladimir-kotikov/clink-completions)
+    - [clink-fzf](https://github.com/chrisant996/clink-fzf)
+    - [clink-zoxide](https://github.com/shunsambongi/clink-zoxide)
+  - [starship](https://github.com/starship/starship)
+  - [git](https://github.com/git-for-windows/git)
 - utils
   - [z](https://github.com/ajeetdsouza/zoxide)
   - [fzf](https://github.com/junegunn/fzf)
@@ -54,3 +55,17 @@ TODO
 - [cmder](https://github.com/cmderdev/cmder)
 - [ConEmu](https://github.com/Maximus5/ConEmu)
 - [zellij](https://zellij.dev/)
+
+## Some helpful configs
+
+### alacritty.yml
+
+```yml
+import:
+  - e:\Alacritty\settings\alacritty.yml
+
+shell:
+  program: cmd.exe
+  args:
+    - /s /k "e:\Alacritty\settings\init.bat"
+```

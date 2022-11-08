@@ -63,6 +63,7 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # family: Consolas
+    # family: FiraCode Nerd Font
     family: FuraMono Nerd Font
 
     # The `style` can be specified to pick a specific face.

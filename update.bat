@@ -1,6 +1,16 @@
 @echo off
 :: ========================================
 
+:: version setup
+set "AL_VER=v0.11.0"
+set "FONT_VER=v2.2.2"
+set "STARSHIP_VER=v1.11.0"
+set "CLINK_URL=https://github.com/chrisant996/clink/releases/download/v1.4.0/clink.1.4.0.74a8d2.zip"
+set "CLINK_COMP_VER=0.4.1"
+
+:: DEBUG
+:: goto:UPDATE_CLINK
+
 :: find root dir
 for /f "delims=" %%i in ("%~dp0") do (
   set "AL_ROOT=%%~fi"
@@ -11,15 +21,12 @@ if "%AL_ROOT:~-1%" == "\" set "AL_ROOT=%AL_ROOT:~0,-1%"
 set "AL_SETTINGS=%AL_ROOT%\settings"
 set "AL_VENDOR=%AL_ROOT%\vendor"
 
-:: DEBUG
-:: goto:UPDATE_CLINK
-
 :UPDATE_ALACRITTY
 :: download alacritty.exe
 :: ========================================
 
 echo download alacritty.exe
-curl -L -o alacritty.exe https://github.com/alacritty/alacritty/releases/download/v0.11.0/Alacritty-v0.11.0-portable.exe
+curl -L -o alacritty.exe https://github.com/alacritty/alacritty/releases/download/%AL_VER%/Alacritty-%AL_VER%-portable.exe
 
 :: create vendor directory
 :: ========================================
@@ -45,7 +52,7 @@ if not exist "%NERD_FONT%\FiraMono" (
 )
 
 echo download NerdFont:FiraMono
-curl -L -o %NERD_FONT%\FiraMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraMono.zip
+curl -L -o %NERD_FONT%\FiraMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/%FONT_VER%/FiraMono.zip
 
 echo extract FiraMono.zip to vendor\NerdFont\FiraMono\
 tar -xf %NERD_FONT%\FiraMono.zip -C %NERD_FONT%\FiraMono\
@@ -58,7 +65,7 @@ call settings\cmds\addfonts.cmd %NERD_FONT%\FiraMono\
 :: ========================================
 
 echo download starship
-curl -L -o %AL_VENDOR%\starship.zip https://github.com/starship/starship/releases/download/v1.11.0/starship-aarch64-pc-windows-msvc.zip
+curl -L -o %AL_VENDOR%\starship.zip https://github.com/starship/starship/releases/download/%STARSHIP_VER%/starship-aarch64-pc-windows-msvc.zip
 
 echo extract starship.zip to vendor\starship.exe
 tar -xf %AL_VENDOR%\starship.zip -C %AL_VENDOR%
@@ -74,23 +81,23 @@ if not exist "%AL_VENDOR%\clink" (
 )
 
 echo download clink
-curl -L -o %AL_VENDOR%\clink.zip https://github.com/chrisant996/clink/releases/download/v1.4.0/clink.1.4.0.74a8d2.zip
+curl -L -o %AL_VENDOR%\clink.zip %CLINK_URL%
 
 echo extract clink.zip to vendor\clink
 tar -xf %AL_VENDOR%\clink.zip -C %AL_VENDOR%\clink
 
-:: clink_completions
-:: if not exist "%AL_VENDOR%\clink_completions" (
-::   echo create dir %AL_VENDOR%\clink_completions
-::   mkdir "%AL_VENDOR%\clink_completions"
+:: clink-completions
+:: if not exist "%AL_VENDOR%\clink-completions" (
+::   echo create dir %AL_VENDOR%\clink-completions
+::   mkdir "%AL_VENDOR%\clink-completions"
 :: )
 
-echo download clink_completions
-curl -L -o %AL_VENDOR%\clink_completions.zip https://github.com/vladimir-kotikov/clink-completions/archive/refs/tags/0.4.1.zip
+echo download clink-completions
+curl -L -o %AL_VENDOR%\clink-completions.zip https://github.com/vladimir-kotikov/clink-completions/archive/refs/tags/%CLINK_COMP_VER%.zip
 
-echo extract clink_completions.zip to vendor\clink_completions
-tar -xf %AL_VENDOR%\clink_completions.zip -C %AL_VENDOR%\
+echo extract clink-completions.zip to vendor\clink-completions
+tar -xf %AL_VENDOR%\clink-completions.zip -C %AL_VENDOR%\
 
 cd %AL_VENDOR%
-ren clink-completions-0.4.1 clink_completions
+ren clink-completions-%CLINK_COMP_VER% clink-completions
 cd ..

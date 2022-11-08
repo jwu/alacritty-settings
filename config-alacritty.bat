@@ -9,9 +9,8 @@ for /f "delims=" %%i in ("%~dp0") do (
 if "%AL_ROOT:~-1%" == "\" set "AL_ROOT=%AL_ROOT:~0,-1%"
 
 set "AL_SETTINGS=%AL_ROOT%\settings"
-set "AL_VENDOR=%AL_ROOT%\vendor"
 
-:: install alacritty
+:: config alacritty
 :: ========================================
 
 :: create alacritty directory
@@ -30,9 +29,3 @@ echo   program: cmd.exe
 echo   args:
 echo     - /s /k "%AL_SETTINGS%\init.bat"
 ) > %APPDATA%\alacritty\alacritty.yml
-
-:: install nerdfonts FiraMono
-:: ========================================
-
-:: install git-for-windows
-:: ========================================

@@ -38,8 +38,8 @@ if exist "%AL_VENDOR%\bin" (
 :: add git-for-windows to environment path
 :: ========================================
 
-if exist "%AL_VENDOR%\git_portable" (
-  set "AL_GIT_ROOT=%AL_VENDOR%\git_portable"
+if exist "%AL_VENDOR%\git-portable" (
+  set "AL_GIT_ROOT=%AL_VENDOR%\git-portable"
   goto :CONFIG_GIT
 ) else (
   goto :NO_GIT
