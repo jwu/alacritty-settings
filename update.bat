@@ -83,7 +83,7 @@ goto:eof
 :: ========================================
 
 echo download starship
-curl https://github.com/starship/starship/releases/download/%STARSHIP_VER%/starship-aarch64-pc-windows-msvc.zip ^
+curl https://github.com/starship/starship/releases/download/%STARSHIP_VER%/starship-x86_64-pc-windows-msvc.zip ^
   -L --progress-bar ^
   -o %MY_VENDOR%\starship.zip
 
