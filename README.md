@@ -2,7 +2,37 @@
 
 <img src="./imgs/preview.png" alt="preview" style="width:600px;"/>
 
-## Windows Setup
+## Features
+
+<img src="./imgs/fast_cd.gif" alt="preview" style="width:600px;"/>
+
+**Fast access directory**
+
+<img src="./imgs/fzf_search.gif" alt="preview" style="width:600px;"/>
+
+**Fuzz search files**
+
+<img src="./imgs/git_complete.gif" alt="preview" style="width:600px;"/>
+
+**Command completions**
+
+## Install (quick)
+
+**Windows Setup**
+
+1. clone the repo
+1. Run `update.bat`
+1. Run `config-alacritty.bat`
+
+FLY!!
+
+**Mac/Linux Setup**
+
+WIP...
+
+## Install (manually)
+
+**Windows Setup**
 
 1. `git clone git@github.com:jwu/alacritty-settings.git ${YOUR_ALACRITTY_PATH}`
 1. install [alacritty](https://github.com/alacritty/alacritty/releases) to `${YOUR_ALACRITTY_PATH}`
@@ -15,9 +45,9 @@
 1. unzip [fzf](https://github.com/junegunn/fzf/releases) to `${YOUR_ALACRITTY_PATH}/vendor/bin`
 1. unzip [zoxide](https://github.com/ajeetdsouza/zoxide/releases) to `${YOUR_ALACRITTY_PATH}/vendor/bin`
 
-## Mac/Linux Setup
+**Mac/Linux Setup**
 
-TODO
+WIP...
 
 ## Reference
 
@@ -47,14 +77,12 @@ TODO
   - [dust](https://github.com/bootandy/dust)
   - [navi](https://github.com/denisidoro/navi)
   - [glow](https://github.com/charmbracelet/glow)
-
-## Other Project
-
-- [warp](https://www.warp.dev/)
-- [nushell](https://github.com/nushell/nushell)
-- [cmder](https://github.com/cmderdev/cmder)
-- [ConEmu](https://github.com/Maximus5/ConEmu)
-- [zellij](https://zellij.dev/)
+- others
+  - [warp](https://www.warp.dev/)
+  - [nushell](https://github.com/nushell/nushell)
+  - [cmder](https://github.com/cmderdev/cmder)
+  - [ConEmu](https://github.com/Maximus5/ConEmu)
+  - [zellij](https://zellij.dev/)
 
 ## Some helpful configs
 
