@@ -6,17 +6,17 @@
 
 <div style="position: relative; width:600px;">
   <img src="./imgs/fast_cd.gif" alt="preview"/>
-  <h2 style="position: absolute; bottom: 10px; right: 10px; color: white;">Fast access directory</h2>
+  <p style="position: absolute; bottom: 10px; right: 10px; color: white;">Fast access directory</p>
 </div>
 
 <div style="position: relative; width:600px;">
   <img src="./imgs/fzf_search.gif" alt="preview"/>
-  <h2 style="position: absolute; bottom: 10px; right: 10px; color: white;">Fuzz search files</h2>
+  <p style="position: absolute; bottom: 10px; right: 10px; color: white;">Fuzz search files</p>
 </div>
 
 <div style="position: relative; width:600px;">
   <img src="./imgs/git_complete.gif" alt="preview"/>
-  <h2 style="position: absolute; bottom: 10px; right: 10px; color: white;">Command completions</h2>
+  <p style="position: absolute; bottom: 10px; right: 10px; color: white;">Command completions</p>
 </div>
 
 ## Install (quick)
