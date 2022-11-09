@@ -4,17 +4,20 @@
 
 ## Features
 
-<img src="./imgs/fast_cd.gif" alt="preview" style="width:600px;"/>
+<div style="position: relative; width:600px;">
+  <img src="./imgs/fast_cd.gif" alt="preview"/>
+  <h2 style="position: absolute; bottom: 10px; right: 10px; color: white;">Fast access directory</h2>
+</div>
 
-**Fast access directory**
+<div style="position: relative; width:600px;">
+  <img src="./imgs/fzf_search.gif" alt="preview"/>
+  <h2 style="position: absolute; bottom: 10px; right: 10px; color: white;">Fuzz search files</h2>
+</div>
 
-<img src="./imgs/fzf_search.gif" alt="preview" style="width:600px;"/>
-
-**Fuzz search files**
-
-<img src="./imgs/git_complete.gif" alt="preview" style="width:600px;"/>
-
-**Command completions**
+<div style="position: relative; width:600px;">
+  <img src="./imgs/git_complete.gif" alt="preview"/>
+  <h2 style="position: absolute; bottom: 10px; right: 10px; color: white;">Command completions</h2>
+</div>
 
 ## Install (quick)
 
