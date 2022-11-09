@@ -1,21 +1,21 @@
 # Alacritty Settings
 
-<img src="./imgs/preview.png" alt="preview" style="width:600px;"/>
+<img src="./imgs/preview.png" style="width:600px;"/>
 
 ## Features
 
 <div style="position: relative; width:600px;">
-  <img src="./imgs/fast_cd.gif" alt="preview"/>
+  <img src="./imgs/fast_cd.gif"/>
   <p style="position: absolute; bottom: 10px; right: 10px; color: white;">Fast access directory</p>
 </div>
 
 <div style="position: relative; width:600px;">
-  <img src="./imgs/fzf_search.gif" alt="preview"/>
+  <img src="./imgs/fzf_search.gif"/>
   <p style="position: absolute; bottom: 10px; right: 10px; color: white;">Fuzz search files</p>
 </div>
 
 <div style="position: relative; width:600px;">
-  <img src="./imgs/git_complete.gif" alt="preview"/>
+  <img src="./imgs/git_complete.gif"/>
   <p style="position: absolute; bottom: 10px; right: 10px; color: white;">Command completions</p>
 </div>
 
