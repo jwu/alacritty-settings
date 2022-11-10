@@ -67,9 +67,11 @@ WIP...
 - utils
   - [z](https://github.com/ajeetdsouza/zoxide)
   - [fzf](https://github.com/junegunn/fzf)
+    - [sk](https://github.com/lotabout/skim) Windows hasn't support
+  - [s](https://github.com/zquestz/s)
   - [fd](https://github.com/sharkdp/fd)
   - [bat](https://github.com/sharkdp/bat)
-  - [s](https://github.com/zquestz/s)
+  - [deno](https://github.com/denoland/deno)
   - [xh](https://github.com/ducaale/xh)
   - [hyperfine](https://github.com/sharkdp/hyperfine)
   - [lsd](https://github.com/Peltoche/lsd)
@@ -80,8 +82,8 @@ WIP...
   - [grex](https://github.com/pemistahl/grex)
   - [delta](https://github.com/dandavison/delta)
   - [dust](https://github.com/bootandy/dust)
-  - [navi](https://github.com/denisidoro/navi)
   - [glow](https://github.com/charmbracelet/glow)
+  - [navi](https://github.com/denisidoro/navi)
 - utils(needs package installer)
   - [fanyi](https://github.com/afc163/fanyi)
 - others

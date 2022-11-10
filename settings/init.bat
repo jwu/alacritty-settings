@@ -9,7 +9,14 @@ set __INIT_START__=%time%
 set __DBG_INFO__=0
 
 :: cmd config
+:: ========================================
+
+:: change lang to utf8
 set LANG=en_US.utf8
+
+:: change chcp to utf8
+chcp 65001
+cls
 
 :: find root dir
 if not defined AL_ROOT (
