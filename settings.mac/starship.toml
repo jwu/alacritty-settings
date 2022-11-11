@@ -17,7 +17,7 @@ error_symbol = "[❯](bold red)"
 [directory]
 truncation_length = 100
 truncate_to_repo = false
-style = "bold blue"
+style = "bold cyan"
 
 [git_branch]
 always_show_remote = true
