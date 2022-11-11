@@ -86,6 +86,10 @@ WIP...
   - [navi](https://github.com/denisidoro/navi)
 - utils(needs package installer)
   - [fanyi](https://github.com/afc163/fanyi)
+- utils(Mac only)
+  - [fish](https://fishshell.com/)
+  - [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
+  - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - others
   - [warp](https://www.warp.dev/)
   - [nushell](https://github.com/nushell/nushell)
@@ -93,9 +97,19 @@ WIP...
   - [ConEmu](https://github.com/Maximus5/ConEmu)
   - [zellij](https://zellij.dev/)
 
-## Some helpful configs
+## Some helpful configs or commands
 
-### alacritty.yml
+### set default shell on `*nix` platofrom
+
+```shell
+# set zsh as default shell
+sudo chsh -s /bin/zsh
+
+# set fish as default shell
+sudo chsh -s /usr/local/bin/fish
+```
+
+### ~/.alacritty.yml
 
 ```yml
 import:
@@ -105,4 +119,35 @@ shell:
   program: cmd.exe
   args:
     - /s /k "e:\Alacritty\settings\init.bat"
+```
+
+### ~/.zshrc
+
+```zsh
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export ZSH=$HOME/.oh-my-zsh
+export LANG=en_US.UTF-8
+export STARSHIP_CONFIG=$HOME/jwu/alacritty-settings/settings.mac/starship.toml
+
+ZSH_THEME="dracula"
+
+plugins=(
+  git
+  zsh-autosuggestions
+)
+
+source $ZSH/oh-my-zsh.sh
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+```
+
+### ~/.config/fish/config.fish
+
+```fish
+set -x PATH $HOME/bin $HOME/.cargo/bin /usr/local/bin $PATH
+set -x LANG "en_US.UTF-8"
+set -x STARSHIP_CONFIG "$HOME/jwu/alacritty-settings/settings.mac/starship.toml"
+
+starship init fish | source
+zoxide init fish | source
 ```
