@@ -67,7 +67,6 @@ WIP...
 - utils
   - [z](https://github.com/ajeetdsouza/zoxide)
   - [fzf](https://github.com/junegunn/fzf)
-    - [sk](https://github.com/lotabout/skim) Windows hasn't support
   - [s](https://github.com/zquestz/s)
   - [fd](https://github.com/sharkdp/fd)
   - [bat](https://github.com/sharkdp/bat)
@@ -78,24 +77,29 @@ WIP...
   - [procs](https://github.com/dalance/procs)
   - [rg](https://github.com/BurntSushi/ripgrep)
   - [jq](https://github.com/stedolan/jq)
+  - [sttr](https://github.com/abhimanyu003/sttr)
   - [btm](https://github.com/ClementTsang/bottom)
   - [grex](https://github.com/pemistahl/grex)
   - [delta](https://github.com/dandavison/delta)
   - [dust](https://github.com/bootandy/dust)
   - [glow](https://github.com/charmbracelet/glow)
   - [navi](https://github.com/denisidoro/navi)
-- utils(needs package installer)
+- utils (needs package installer)
   - [fanyi](https://github.com/afc163/fanyi)
-- utils(Mac only)
-  - [fish](https://fishshell.com/)
-  - [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
-  - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- utils (`*nix` only)
+  - [sk](https://github.com/lotabout/skim)
 - others
-  - [warp](https://www.warp.dev/)
   - [nushell](https://github.com/nushell/nushell)
-  - [cmder](https://github.com/cmderdev/cmder)
-  - [ConEmu](https://github.com/Maximus5/ConEmu)
-  - [zellij](https://zellij.dev/)
+  - Mac
+    - [warp](https://www.warp.dev/)
+  - Mac, BSD & `*nix`
+    - [fish](https://fishshell.com/)
+    - [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
+    - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+    - [zellij](https://zellij.dev/)
+  - Windows
+    - [cmder](https://github.com/cmderdev/cmder)
+    - [ConEmu](https://github.com/Maximus5/ConEmu)
 
 ## Some helpful configs or commands
 
