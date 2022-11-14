@@ -55,10 +55,12 @@ WIP...
 1. install [FiraMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraMono.zip)
 1. install [fishshell](https://fishshell.com/)
 1. install [git](https://git-scm.com/)
-1. install [starship](https://github.com/starship/starship/releases) to `/usr/local/bin`
-1. install [fzf](https://github.com/junegunn/fzf/releases) to `/usr/local/bin`
-1. install [zoxide](https://github.com/ajeetdsouza/zoxide/releases) to `/usr/local/bin`
+1. unzip [starship](https://github.com/starship/starship/releases) to `/usr/local/bin`
+1. unzip [fzf](https://github.com/junegunn/fzf/releases) to `/usr/local/bin`
+1. unzip [zoxide](https://github.com/ajeetdsouza/zoxide/releases) to `/usr/local/bin`
 1. setup `~/.config/fish/config.fish`
+
+**~/.config/fish/config.fish**
 
 ```fish
 set -x PATH ~/bin ~/.cargo/bin /usr/local/bin $PATH
