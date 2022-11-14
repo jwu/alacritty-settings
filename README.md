@@ -40,17 +40,34 @@ WIP...
 1. `git clone git@github.com:jwu/alacritty-settings.git ${YOUR_ALACRITTY_PATH}`
 1. install [alacritty](https://github.com/alacritty/alacritty/releases) to `${YOUR_ALACRITTY_PATH}`
 1. install [FiraMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraMono.zip)
-1. copy `${YOUR_ALACRITTY_PATH}/alacrity.default.yml` to `~/AppData/Roaming/alacritty/alacritty.yml`
 1. unzip [clink](https://github.com/chrisant996/clink/releases) to `${YOUR_ALACRITTY_PATH}/vendor/clink`
 1. unzip [clink-completions](https://github.com/vladimir-kotikov/clink-completions/releases) to `${YOUR_ALACRITTY_PATH}/vendor/clink_completions`
 1. unzip [git-for-windows](https://github.com/git-for-windows/git/releases) to `${YOUR_ALACRITTY_PATH}/vendor/git`
 1. unzip [starship](https://github.com/starship/starship/releases) to `${YOUR_ALACRITTY_PATH}/vendor`
 1. unzip [fzf](https://github.com/junegunn/fzf/releases) to `${YOUR_ALACRITTY_PATH}/vendor/bin`
 1. unzip [zoxide](https://github.com/ajeetdsouza/zoxide/releases) to `${YOUR_ALACRITTY_PATH}/vendor/bin`
+1. Run `config-alacritty.bat`
 
 **Mac/Linux Setup**
 
-WIP...
+1. `git clone git@github.com:jwu/alacritty-settings.git ${YOUR_ALACRITTY_PATH}`
+1. install [alacritty](https://github.com/alacritty/alacritty/releases) to `${YOUR_ALACRITTY_PATH}`
+1. install [FiraMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraMono.zip)
+1. install [fishshell](https://fishshell.com/)
+1. install [git](https://git-scm.com/)
+1. install [starship](https://github.com/starship/starship/releases) to `/usr/local/bin`
+1. install [fzf](https://github.com/junegunn/fzf/releases) to `/usr/local/bin`
+1. install [zoxide](https://github.com/ajeetdsouza/zoxide/releases) to `/usr/local/bin`
+1. setup `~/.config/fish/config.fish`
+
+```fish
+set -x PATH ~/bin ~/.cargo/bin /usr/local/bin $PATH
+set -x LANG "en_US.UTF-8"
+set -x STARSHIP_CONFIG "$YOUR_ALACRITTY_PATH/settings.mac/starship.toml"
+
+starship init fish | source
+zoxide init fish | source
+```
 
 ## Reference
 
@@ -128,10 +145,10 @@ shell:
 ### ~/.zshrc
 
 ```zsh
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export ZSH=$HOME/.oh-my-zsh
+export PATH=~/bin:/usr/local/bin:$PATH
+export ZSH=~/.oh-my-zsh
 export LANG=en_US.UTF-8
-export STARSHIP_CONFIG=$HOME/jwu/alacritty-settings/settings.mac/starship.toml
+export STARSHIP_CONFIG=~/alacritty-settings/settings.mac/starship.toml
 
 ZSH_THEME="dracula"
 
@@ -148,9 +165,9 @@ eval "$(zoxide init zsh)"
 ### ~/.config/fish/config.fish
 
 ```fish
-set -x PATH $HOME/bin $HOME/.cargo/bin /usr/local/bin $PATH
+set -x PATH ~/bin ~/.cargo/bin /usr/local/bin $PATH
 set -x LANG "en_US.UTF-8"
-set -x STARSHIP_CONFIG "$HOME/jwu/alacritty-settings/settings.mac/starship.toml"
+set -x STARSHIP_CONFIG "~/alacritty-settings/settings.mac/starship.toml"
 
 starship init fish | source
 zoxide init fish | source
