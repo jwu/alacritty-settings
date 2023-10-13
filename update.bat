@@ -2,14 +2,15 @@
 :: ========================================
 
 :: version setup
-set "AL_VER=v0.11.0"
-set "FONT_VER=v2.2.2"
-set "STARSHIP_VER=v1.11.0"
-set "CLINK_URL=https://github.com/chrisant996/clink/releases/download/v1.4.0/clink.1.4.0.74a8d2.zip"
-set "CLINK_COMP_VER=0.4.1"
-set "GIT_VER=2.38.1"
-set "FZF_VER=0.34.0"
-set "Z_VER=0.8.3"
+set "AL_VER=v0.12.3"
+set "FONT_VER=v3.0.2"
+set "STARSHIP_VER=v1.16.0"
+set "CLINK_URL=https://github.com/chrisant996/clink/releases/download/v1.5.9/clink.1.5.9.411d0f.zip"
+set "CLINK_COMP_VER=0.4.11"
+set "GIT_VER=2.42.0.2"
+set "GIT_VER_WIN=2.42.0.windows.2"
+set "FZF_VER=0.42.0"
+set "Z_VER=0.9.2"
 
 :: find root dir
 for /f "delims=" %%i in ("%~dp0") do (
@@ -119,7 +120,7 @@ del %MY_VENDOR%\clink.zip
 :: )
 
 echo download clink-completions
-curl https://github.com/vladimir-kotikov/clink-completions/archive/refs/tags/%CLINK_COMP_VER%.zip ^
+curl https://github.com/vladimir-kotikov/clink-completions/archive/refs/tags/v%CLINK_COMP_VER%.zip ^
   -L --progress-bar ^
   -o %MY_VENDOR%\clink-completions.zip
 
@@ -137,7 +138,7 @@ goto:eof
 :: ========================================
 
 echo download git
-curl https://github.com/git-for-windows/git/releases/download/v%GIT_VER%.windows.1/MinGit-%GIT_VER%-64-bit.zip ^
+curl https://github.com/git-for-windows/git/releases/download/v%GIT_VER_WIN%/MinGit-%GIT_VER%-64-bit.zip ^
   -L --progress-bar ^
   -o %MY_VENDOR%\git.zip
 
