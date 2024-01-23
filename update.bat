@@ -2,7 +2,7 @@
 :: ========================================
 
 :: version setup
-set "AL_VER=v0.12.3"
+set "AL_VER=v0.13.1"
 set "FONT_VER=v3.0.2"
 set "STARSHIP_VER=v1.16.0"
 set "CLINK_URL=https://github.com/chrisant996/clink/releases/download/v1.5.9/clink.1.5.9.411d0f.zip"
