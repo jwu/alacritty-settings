@@ -2,15 +2,15 @@
 :: ========================================
 
 :: version setup
-set "AL_VER=v0.13.1"
+set "AL_VER=v0.13.2"
 set "FONT_VER=v3.0.2"
-set "STARSHIP_VER=v1.16.0"
-set "CLINK_URL=https://github.com/chrisant996/clink/releases/download/v1.5.9/clink.1.5.9.411d0f.zip"
-set "CLINK_COMP_VER=0.4.11"
+set "STARSHIP_VER=v1.18.1"
+set "CLINK_URL=https://github.com/chrisant996/clink/releases/download/v1.6.10/clink.1.6.10.d5dce0.zip"
+set "CLINK_COMP_VER=0.5.2"
 set "GIT_VER=2.42.0.2"
 set "GIT_VER_WIN=2.42.0.windows.2"
 set "FZF_VER=0.42.0"
-set "Z_VER=0.9.2"
+set "Z_VER=0.9.4"
 
 :: find root dir
 for /f "delims=" %%i in ("%~dp0") do (
