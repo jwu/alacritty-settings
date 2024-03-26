@@ -25,7 +25,7 @@ load(io.popen(starship_exe..' init cmd'):read("*a"))()
 local completions_dir = clink.get_env('AL_VENDOR')..'/clink-completions/'
 
 -- Execute '.init.lua' first to ensure package.path is set properly
-dofile(completions_dir..'.init.lua')
+dofile(completions_dir..'!init.lua')
 
 for _,lua_module in ipairs(clink.find_files(completions_dir..'*.lua')) do
   -- Skip files that starts with _. This could be useful if some files should be ignored
