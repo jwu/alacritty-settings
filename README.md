@@ -48,7 +48,7 @@ WIP...
 1. unzip [zoxide](https://github.com/ajeetdsouza/zoxide/releases) to `${YOUR_ALACRITTY_PATH}/vendor/bin`
 1. Run `config-alacritty.bat`
 
-**Mac/Linux Setup**
+**Mac & Linux Setup**
 
 1. `git clone git@github.com:jwu/alacritty-settings.git ${YOUR_ALACRITTY_PATH}`
 1. install [alacritty](https://github.com/alacritty/alacritty/releases) to `${YOUR_ALACRITTY_PATH}`
@@ -58,14 +58,19 @@ WIP...
 1. unzip [starship](https://github.com/starship/starship/releases) to `/usr/local/bin`
 1. unzip [fzf](https://github.com/junegunn/fzf/releases) to `/usr/local/bin`
 1. unzip [zoxide](https://github.com/ajeetdsouza/zoxide/releases) to `/usr/local/bin`
-1. setup `~/.config/fish/config.fish`
+1. cp `settings/alacrity.toml` to `~/.alacritty.toml`
+1. cp `settings/starship.toml` to `~/.config/starship.toml`
+1. edit `~/.config/fish/config.fish`
 
 **~/.config/fish/config.fish**
 
 ```fish
-set -x PATH ~/bin ~/.cargo/bin /usr/local/bin $PATH
+set -x PATH ~/bin ~/.cargo/bin ~/.local/bin /usr/local/bin $PATH
+set -x PATH /opt/nvim-linux64/bin $PATH
 set -x LANG "en_US.UTF-8"
-set -x STARSHIP_CONFIG "$YOUR_ALACRITTY_PATH/settings.mac/starship.toml"
+
+# NOTE: in ubuntu, this doesn't work
+# set -x STARSHIP_CONFIG "~/alacritty-settings/settings.mac/starship.toml"
 
 starship init fish | source
 zoxide init fish | source
@@ -167,9 +172,12 @@ eval "$(zoxide init zsh)"
 ### ~/.config/fish/config.fish
 
 ```fish
-set -x PATH ~/bin ~/.cargo/bin /usr/local/bin $PATH
+set -x PATH ~/bin ~/.cargo/bin ~/.local/bin /usr/local/bin $PATH
+set -x PATH /opt/nvim-linux64/bin $PATH
 set -x LANG "en_US.UTF-8"
-set -x STARSHIP_CONFIG "~/alacritty-settings/settings.mac/starship.toml"
+
+# NOTE: in ubuntu, this doesn't work
+# set -x STARSHIP_CONFIG "~/alacritty-settings/settings.mac/starship.toml"
 
 starship init fish | source
 zoxide init fish | source

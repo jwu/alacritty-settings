@@ -1,0 +1,43 @@
+# Get editor completions based on the config schema
+# "$schema" = 'https://starship.rs/config-schema.json'
+
+# Don't print a new line at the start of the prompt
+format = """
+$directory$git_branch$git_commit$git_status
+$character"""
+
+scan_timeout = 100
+command_timeout = 500
+add_newline = true
+
+[character]
+success_symbol = "[>](bold #808080)"
+error_symbol = "[>](bold red)"
+
+[directory]
+truncation_length = 100
+truncate_to_repo = false
+style = "bold cyan"
+
+[git_branch]
+always_show_remote = true
+symbol = " "
+style = "bold purple"
+format = "on [$symbol$branch( \ufc32 $remote_name)]($style) "
+
+[git_status]
+style = "bold yellow"
+untracked = "?"
+modified = '*'
+deleted = '-'
+conflicted = 'x'
+ahead = "[\ue353${count}](bold green)"
+behind = "[\ue340${count}](bold red)"
+diverged = "[⇕\ue353${ahead_count}\ue340${behind_count}](bold yellow)"
+format = '($ahead_behind )([\[$conflicted$stashed$untracked$deleted$renamed$staged$modified\]]($style) )'
+
+[git_commit]
+format = "([$tag]($style) )"
+tag_disabled = false
+only_detached = false
+tag_symbol = "\uf02b "

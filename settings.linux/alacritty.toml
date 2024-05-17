@@ -75,9 +75,9 @@ vi_mode_style = "None"
 style = { blinking = "Off", shape = "Block" }
 
 [font]
-size = 13.0
+size = 12
 normal = { family = "FuraMono Nerd Font", style = "Regular" }
-offset = { x = 0, y = 0 }
+offset = { x = -1, y = 0 }
 
 [keyboard]
 bindings = [
@@ -96,9 +96,17 @@ save_to_clipboard = true
 
 [window]
 decorations = "full"
-dynamic_padding = false
+dynamic_padding = true
 dynamic_title = true
 opacity = 0.95
 startup_mode = "Windowed"
 title = "Alacritty"
-padding = { x = 10, y = 10}
+padding = { x = 0, y = 0}
+
+# Shell
+#
+# You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
+# Entries in shell.args are passed unmodified as arguments to the shell.
+[shell]
+program = "/usr/bin/fish"
+args = []
