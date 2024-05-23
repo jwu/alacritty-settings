@@ -23,7 +23,7 @@ style = "bold cyan"
 always_show_remote = true
 symbol = " "
 style = "bold purple"
-format = "on [$symbol$branch( \ufc32 $remote_name)]($style) "
+format = "on [$symbol$branch( \uf0da $remote_name)]($style) "
 
 [git_status]
 style = "bold yellow"
