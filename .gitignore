@@ -4,3 +4,4 @@ vendor/
 clink_history*
 clink.log
 *.exe
+settings/clink_profile/

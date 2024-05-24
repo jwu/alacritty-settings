@@ -76,7 +76,7 @@ style = { blinking = "Off", shape = "Block" }
 
 [font]
 size = 12
-normal = { family = "FuraMono Nerd Font", style = "Regular" }
+normal = { family = "FiraMono Nerd Font", style = "Regular" }
 offset = { x = -1, y = 0 }
 
 [keyboard]

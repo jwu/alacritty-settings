@@ -75,7 +75,7 @@ vi_mode_style = "None"
 style = { blinking = "Off", shape = "Block" }
 
 [font]
-size = 11.0
+size = 12.0
 normal = { family = "FiraMono Nerd Font", style = "Regular" }
 offset = { x = 0, y = 0 }
 
