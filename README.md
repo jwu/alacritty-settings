@@ -52,14 +52,15 @@ WIP...
 
 1. `git clone git@github.com:jwu/alacritty-settings.git ${YOUR_ALACRITTY_PATH}`
 1. install [alacritty](https://github.com/alacritty/alacritty/releases) to `${YOUR_ALACRITTY_PATH}`
-1. install [FiraMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraMono.zip)
+1. install [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads)
 1. install [fishshell](https://fishshell.com/)
 1. install [git](https://git-scm.com/)
-1. unzip [starship](https://github.com/starship/starship/releases) to `/usr/local/bin`
-1. unzip [fzf](https://github.com/junegunn/fzf/releases) to `/usr/local/bin`
-1. unzip [zoxide](https://github.com/ajeetdsouza/zoxide/releases) to `/usr/local/bin`
-1. cp `settings/alacrity.toml` to `~/.alacritty.toml`
-1. cp `settings/starship.toml` to `~/.config/starship.toml`
+1. install starship `curl -sS https://starship.rs/install.sh | sh`
+1. install fzf `sudo apt install fzf`
+1. install zellij `cargo install --locked zellij`
+1. cp `settings.linux/alacrity.toml` to `~/.alacritty.toml`
+1. cp `settings.linux/starship.toml` to `~/.config/starship.toml`
+1. cp `settings.linux/config.kdl` to `~/.config/zellij/config.kdl`
 1. edit `~/.config/fish/config.fish`
 
 **~/.config/fish/config.fish**
