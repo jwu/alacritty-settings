@@ -1,1 +1,2 @@
-default_shell "fish"
+default_shell "/usr/bin/fish"
+copy_command: "wl-copy"
