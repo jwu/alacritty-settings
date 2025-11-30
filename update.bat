@@ -2,15 +2,15 @@
 :: ========================================
 
 :: version setup
-set "AL_VER=v0.13.2"
-set "FONT_VER=v3.0.2"
-set "STARSHIP_VER=v1.18.1"
-set "CLINK_URL=https://github.com/chrisant996/clink/releases/download/v1.6.10/clink.1.6.10.d5dce0.zip"
-set "CLINK_COMP_VER=0.5.2"
+set "AL_VER=v0.16.1"
+set "FONT_VER=v3.4.0"
+set "STARSHIP_VER=v1.24.1"
+set "CLINK_URL=https://github.com/chrisant996/clink/releases/download/v1.9.3/clink.1.9.3.0ef759.zip"
+set "CLINK_COMP_VER=0.6.7"
 set "GIT_VER=2.42.0.2"
 set "GIT_VER_WIN=2.42.0.windows.2"
-set "FZF_VER=0.42.0"
-set "Z_VER=0.9.4"
+set "FZF_VER=0.67.0"
+set "Z_VER=0.9.8"
 
 :: find root dir
 for /f "delims=" %%i in ("%~dp0") do (
@@ -159,7 +159,7 @@ goto:eof
 :: ========================================
 
 echo download fzf
-curl https://github.com/junegunn/fzf/releases/download/%FZF_VER%/fzf-%FZF_VER%-windows_amd64.zip ^
+curl https://github.com/junegunn/fzf/releases/download/v%FZF_VER%/fzf-%FZF_VER%-windows_amd64.zip ^
   -L --progress-bar ^
   -o %MY_VENDOR%\fzf.zip
 
