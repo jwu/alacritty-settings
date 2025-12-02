@@ -103,6 +103,7 @@ zoxide init fish | source
   - [delta](https://github.com/dandavison/delta)
   - [sd](https://github.com/chmln/sd)
 - utils (dev)
+  - [opencode](https://opencode.ai/)
   - [mise](https://github.com/jdx/mise)
   - [xh](https://github.com/ducaale/xh)
   - [yq](https://github.com/mikefarah/yq)
