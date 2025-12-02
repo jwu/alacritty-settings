@@ -1,4 +1,5 @@
 @echo off
+setlocal enabledelayedexpansion
 :: ========================================
 
 :: version setup
@@ -12,6 +13,9 @@ set "GIT_VER_WIN=2.42.0.windows.2"
 set "FZF_VER=0.67.0"
 set "Z_VER=0.9.8"
 
+:: error handling
+set "ERROR_COUNT=0"
+
 :: find root dir
 for /f "delims=" %%i in ("%~dp0") do (
   set "MY_ROOT=%%~fi"
@@ -21,10 +25,7 @@ if "%MY_ROOT:~-1%" == "\" set "MY_ROOT=%MY_ROOT:~0,-1%"
 set "MY_VENDOR=%MY_ROOT%\vendor"
 
 :: create vendor directory
-if not exist "%MY_VENDOR%" (
-  echo create dir %MY_VENDOR%
-  mkdir "%MY_VENDOR%"
-)
+call :CREATE_DIR_IF_NOT_EXISTS "%MY_VENDOR%"
 
 :: ========================================
 :: DEBUG
@@ -55,25 +56,10 @@ goto:eof
 
 :: create NerdFont directory
 set "MY_NERD_FONT=%MY_VENDOR%\NerdFont"
-if not exist "%MY_NERD_FONT%" (
-  echo create dir %MY_NERD_FONT%
-  mkdir "%MY_NERD_FONT%"
-)
+call :CREATE_DIR_IF_NOT_EXISTS "%MY_NERD_FONT%"
+call :CREATE_DIR_IF_NOT_EXISTS "%MY_NERD_FONT%\FiraMono"
 
-:: create NerdFont\FiraMono directory
-if not exist "%MY_NERD_FONT%\FiraMono" (
-  echo create dir %MY_NERD_FONT%\FiraMono
-  mkdir "%MY_NERD_FONT%\FiraMono"
-)
-
-echo download NerdFont:FiraMono
-curl https://github.com/ryanoasis/nerd-fonts/releases/download/%FONT_VER%/FiraMono.zip ^
-  -L --progress-bar ^
-  -o %MY_NERD_FONT%\FiraMono.zip
-
-echo extract FiraMono.zip to vendor\NerdFont\FiraMono\
-tar -xf %MY_NERD_FONT%\FiraMono.zip -C %MY_NERD_FONT%\FiraMono\
-del %MY_NERD_FONT%\FiraMono.zip
+call :DOWNLOAD_AND_EXTRACT "https://github.com/ryanoasis/nerd-fonts/releases/download/%FONT_VER%/FiraMono.zip" "%MY_NERD_FONT%\FiraMono.zip" "%MY_NERD_FONT%\FiraMono\"
 
 echo install FiraMono fonts
 call settings\cmds\addfonts.cmd %MY_NERD_FONT%\FiraMono\
@@ -83,41 +69,15 @@ goto:eof
 :UPDATE_STARSHIP
 :: ========================================
 
-echo download starship
-curl https://github.com/starship/starship/releases/download/%STARSHIP_VER%/starship-x86_64-pc-windows-msvc.zip ^
-  -L --progress-bar ^
-  -o %MY_VENDOR%\starship.zip
-
-
-echo extract starship.zip to vendor\starship.exe
-tar -xf %MY_VENDOR%\starship.zip -C %MY_VENDOR%
-del %MY_VENDOR%\starship.zip
+call :DOWNLOAD_AND_EXTRACT "https://github.com/starship/starship/releases/download/%STARSHIP_VER%/starship-x86_64-pc-windows-msvc.zip" "%MY_VENDOR%\starship.zip" "%MY_VENDOR%"
 goto:eof
 
 :: ========================================
 :UPDATE_CLINK
 :: ========================================
 
-:: create vendor\clink directory
-if not exist "%MY_VENDOR%\clink" (
-  echo create dir %MY_VENDOR%\clink
-  mkdir "%MY_VENDOR%\clink"
-)
-
-echo download clink
-curl %CLINK_URL% ^
-  -L --progress-bar ^
-  -o %MY_VENDOR%\clink.zip
-
-echo extract clink.zip to vendor\clink
-tar -xf %MY_VENDOR%\clink.zip -C %MY_VENDOR%\clink
-del %MY_VENDOR%\clink.zip
-
-:: create clink-completions directory
-:: if not exist "%MY_VENDOR%\clink-completions" (
-::   echo create dir %MY_VENDOR%\clink-completions
-::   mkdir "%MY_VENDOR%\clink-completions"
-:: )
+call :CREATE_DIR_IF_NOT_EXISTS "%MY_VENDOR%\clink"
+call :DOWNLOAD_AND_EXTRACT "%CLINK_URL%" "%MY_VENDOR%\clink.zip" "%MY_VENDOR%\clink"
 
 echo download clink-completions
 curl https://github.com/vladimir-kotikov/clink-completions/archive/refs/tags/v%CLINK_COMP_VER%.zip ^
@@ -129,7 +89,16 @@ tar -xf %MY_VENDOR%\clink-completions.zip -C %MY_VENDOR%\
 del %MY_VENDOR%\clink-completions.zip
 
 cd %MY_VENDOR%
-ren clink-completions-%CLINK_COMP_VER% clink-completions
+if exist clink-completions (
+  echo remove existing clink-completions directory
+  rd /s /q clink-completions
+)
+if exist clink-completions-%CLINK_COMP_VER% (
+  ren clink-completions-%CLINK_COMP_VER% clink-completions
+) else (
+  echo clink-completions-%CLINK_COMP_VER% directory not found after extraction
+  set /a "ERROR_COUNT+=1"
+)
 cd ..
 goto:eof
 
@@ -137,20 +106,8 @@ goto:eof
 :UPDATE_GIT
 :: ========================================
 
-echo download git
-curl https://github.com/git-for-windows/git/releases/download/v%GIT_VER_WIN%/MinGit-%GIT_VER%-64-bit.zip ^
-  -L --progress-bar ^
-  -o %MY_VENDOR%\git.zip
-
-:: create vendor\git directory
-if not exist "%MY_VENDOR%\git" (
-  echo create dir %MY_VENDOR%\git
-  mkdir "%MY_VENDOR%\git"
-)
-
-echo extract git.zip to vendor\git
-tar -xf %MY_VENDOR%\git.zip -C %MY_VENDOR%\git
-del %MY_VENDOR%\git.zip
+call :CREATE_DIR_IF_NOT_EXISTS "%MY_VENDOR%\git"
+call :DOWNLOAD_AND_EXTRACT "https://github.com/git-for-windows/git/releases/download/v%GIT_VER_WIN%/MinGit-%GIT_VER%-64-bit.zip" "%MY_VENDOR%\git.zip" "%MY_VENDOR%\git"
 
 goto:eof
 
@@ -158,20 +115,8 @@ goto:eof
 :UPDATE_FZF
 :: ========================================
 
-echo download fzf
-curl https://github.com/junegunn/fzf/releases/download/v%FZF_VER%/fzf-%FZF_VER%-windows_amd64.zip ^
-  -L --progress-bar ^
-  -o %MY_VENDOR%\fzf.zip
-
-:: create vendor\bin directory
-if not exist "%MY_VENDOR%\bin" (
-  echo create dir %MY_VENDOR%\bin
-  mkdir "%MY_VENDOR%\bin"
-)
-
-echo extract fzf.zip to vendor\bin
-tar -xf %MY_VENDOR%\fzf.zip -C %MY_VENDOR%\bin
-del %MY_VENDOR%\fzf.zip
+call :CREATE_DIR_IF_NOT_EXISTS "%MY_VENDOR%\bin"
+call :DOWNLOAD_AND_EXTRACT "https://github.com/junegunn/fzf/releases/download/v%FZF_VER%/fzf-%FZF_VER%-windows_amd64.zip" "%MY_VENDOR%\fzf.zip" "%MY_VENDOR%\bin"
 
 goto:eof
 
@@ -179,25 +124,54 @@ goto:eof
 :UPDATE_Z
 :: ========================================
 
-echo download zoxide
-curl https://github.com/ajeetdsouza/zoxide/releases/download/v%Z_VER%/zoxide-%Z_VER%-x86_64-pc-windows-msvc.zip ^
-  -L --progress-bar ^
-  -o %MY_VENDOR%\zoxide.zip
-
-:: create vendor\bin directory
-if not exist "%MY_VENDOR%\bin" (
-  echo create dir %MY_VENDOR%\bin
-  mkdir "%MY_VENDOR%\bin"
-)
-
-echo extract zoxide.zip to vendor\bin
-tar -xf %MY_VENDOR%\zoxide.zip -C %MY_VENDOR%\bin
-del %MY_VENDOR%\zoxide.zip
+call :DOWNLOAD_AND_EXTRACT "https://github.com/ajeetdsouza/zoxide/releases/download/v%Z_VER%/zoxide-%Z_VER%-x86_64-pc-windows-msvc.zip" "%MY_VENDOR%\zoxide.zip" "%MY_VENDOR%\bin"
 
 goto:eof
+
+:: ========================================
+:UTILITY_FUNCTIONS
+:: ========================================
+
+:CREATE_DIR_IF_NOT_EXISTS
+if not exist "%~1" (
+  echo create dir %~1
+  mkdir "%~1" || (
+    echo Failed to create directory: %~1
+    set /a "ERROR_COUNT+=1"
+    exit /b 1
+  )
+)
+exit /b 0
+
+:DOWNLOAD_AND_EXTRACT
+set "URL=%~1"
+set "ZIP_FILE=%~2"
+set "EXTRACT_DIR=%~3"
+
+echo download from %URL%
+curl "%URL%" -L --progress-bar -o "%ZIP_FILE%" || (
+  echo Failed to download: %URL%
+  set /a "ERROR_COUNT+=1"
+  exit /b 1
+)
+
+echo extract %ZIP_FILE% to %EXTRACT_DIR%
+tar -xf "%ZIP_FILE%" -C "%EXTRACT_DIR%" || (
+  echo Failed to extract: %ZIP_FILE%
+  set /a "ERROR_COUNT+=1"
+  exit /b 1
+)
+
+del "%ZIP_FILE%"
+exit /b 0
 
 :: ========================================
 :END
 :: ========================================
 
-echo Done!
+if %ERROR_COUNT% equ 0 (
+  echo Done!
+) else (
+  echo Update completed with %ERROR_COUNT% error(s)!
+)
+exit /b %ERROR_COUNT%
