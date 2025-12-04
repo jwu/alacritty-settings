@@ -30,8 +30,4 @@ echo [terminal]
 echo [terminal.shell]
 echo program = "cmd.exe"
 echo args = ["/s", "/k", "%MY_SETTINGS_ESCAPED%\\init.bat"]
-echo.
-echo # this will fix OpenCode not work with IME problem
-echo [mouse]
-echo hide_when_typing = true
 ) > %APPDATA%\alacritty\alacritty.toml
