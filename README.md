@@ -112,6 +112,7 @@ zoxide init fish | source
   - [grex](https://github.com/pemistahl/grex)
   - [hyperfine](https://github.com/sharkdp/hyperfine)
   - [navi](https://github.com/denisidoro/navi)
+  - [yazi](https://github.com/sxyazi/yazi)
 - utils (okay)
   - [xplr](https://github.com/sayanarijit/xplr)
   - [s](https://github.com/zquestz/s)
