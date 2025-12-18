@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 
--- 启动的 shell（等价于 terminal.shell）
+-- shell prog
 config.default_prog = {
   'cmd.exe',
   '/s',
@@ -11,10 +11,37 @@ config.default_prog = {
 }
 
 config.default_cwd = 'D:\\'
+config.set_environment_variables = {
+  TERM = 'wezterm',
+}
+
+-- Appearance
+config.window_decorations = "RESIZE"
 config.enable_tab_bar = true
+config.hide_tab_bar_if_only_one_tab = false
+-- config.tab_max_width = 16
+
+-- Colors
+config.color_scheme = 'Dracula'
+config.window_frame = {
+  active_titlebar_bg = '#222222',
+  inactive_titlebar_bg = '#222222',
+}
+config.colors = {
+  tab_bar = {
+    active_tab = {
+      bg_color = '#2b2042',
+      fg_color = '#c0c0c0',
+      intensity = 'Normal',
+      underline = 'None',
+      italic = false,
+      strikethrough = false,
+    },
+  }
+}
 
 ----------------------------------------------------------------------
--- 基本行为
+-- General
 ----------------------------------------------------------------------
 
 config.automatically_reload_config = true
@@ -23,7 +50,7 @@ config.use_fancy_tab_bar = true
 config.window_close_confirmation = 'NeverPrompt'
 
 ----------------------------------------------------------------------
--- 窗口设置
+-- Window
 ----------------------------------------------------------------------
 
 config.window_decorations = 'RESIZE' -- Alacritty 的 full
@@ -39,7 +66,7 @@ config.initial_cols = nil
 config.initial_rows = nil
 
 ----------------------------------------------------------------------
--- 字体
+-- Font
 ----------------------------------------------------------------------
 
 config.font_size = 12.5
@@ -81,7 +108,7 @@ config.font_rules = {
 }
 
 ----------------------------------------------------------------------
--- 光标
+-- Cursor
 ----------------------------------------------------------------------
 
 config.cursor_blink_rate = 750
@@ -90,81 +117,26 @@ config.cursor_blink_ease_out = 'EaseOut'
 config.default_cursor_style = 'BlinkingBlock'
 
 ----------------------------------------------------------------------
--- 滚动
+-- Scroll
 ----------------------------------------------------------------------
 
 config.scrollback_lines = 10000
 config.mouse_wheel_scrolls_tabs = false
 
 ----------------------------------------------------------------------
--- 鼠标
+-- Mouse
 ----------------------------------------------------------------------
 
 config.hide_mouse_cursor_when_typing = false
 
 ----------------------------------------------------------------------
--- 选择
+-- Selection
 ----------------------------------------------------------------------
 
 config.selection_word_boundary = '{}[]()"\'`.,;:'
 
--- 等价于 save_to_clipboard = true
--- config.selection_clipboard = 'Clipboard'
-
 ----------------------------------------------------------------------
--- 颜色（Dracula 风格，来自你的 alacritty 配置）
-----------------------------------------------------------------------
-
-config.colors = {
-  foreground = '#f8f8f2',
-  background = '#282a36',
-  cursor_bg = '#f8f8f2',
-  cursor_fg = '#282a36',
-  cursor_border = '#f8f8f2',
-  -- selection_fg = '#f8f8f2',
-  selection_bg = '#44475a',
-
-  ansi = {
-    '#21222c', -- black
-    '#ff5555', -- red
-    '#50fa7b', -- green
-    '#f1fa8c', -- yellow
-    '#bd93f9', -- blue
-    '#ff79c6', -- magenta
-    '#8be9fd', -- cyan
-    '#f8f8f2', -- white
-  },
-
-  brights = {
-    '#6272a4',
-    '#ff6e6e',
-    '#69ff94',
-    '#ffffa5',
-    '#d6acff',
-    '#ff92df',
-    '#a4ffff',
-    '#ffffff',
-  },
-
-  tab_bar = {
-    background = '#282a36',
-    active_tab = {
-      bg_color = '#44475a',
-      fg_color = '#f8f8f2',
-    },
-    inactive_tab = {
-      bg_color = '#282a36',
-      fg_color = '#6272a4',
-    },
-    inactive_tab_hover = {
-      bg_color = '#44475a',
-      fg_color = '#f8f8f2',
-    },
-  },
-}
-
-----------------------------------------------------------------------
--- Bell（Alacritty bell.duration = 0 → WezTerm 关闭视觉 bell）
+-- Bell
 ----------------------------------------------------------------------
 
 config.audible_bell = 'Disabled'
@@ -176,15 +148,26 @@ config.visual_bell = {
 }
 
 ----------------------------------------------------------------------
--- 快捷键
+-- Key Bindings
 ----------------------------------------------------------------------
 
 config.keys = {
+  -- new & close
   {
     key = 'n',
     mods = 'CTRL',
-    action = wezterm.action.SpawnWindow,
+    action = wezterm.action.SpawnTab('CurrentPaneDomain'),
   },
+  {
+    key = 'w',
+    mods = 'CTRL',
+    action = wezterm.action.CloseCurrentPane { confirm = false },
+  },
+  -- {
+  --   key = 'Enter',
+  --   mods = 'CTRL',
+  --   action = wezterm.action.TogglePaneZoomState,
+  -- },
 
   -- active pane
   {
@@ -241,19 +224,6 @@ config.keys = {
       size = { Percent = 50 },
     },
   },
-}
-
-----------------------------------------------------------------------
--- 标题
-----------------------------------------------------------------------
-
-config.window_frame = {
-  active_titlebar_bg = '#282a36',
-  inactive_titlebar_bg = '#282a36',
-}
-
-config.set_environment_variables = {
-  TERM = 'wezterm',
 }
 
 ----------------------------------------------------------------------
