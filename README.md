@@ -1,4 +1,4 @@
-# Alacritty Settings
+# Terminal Settings (mainly for Alacritty & Wezterm)
 
 <img src="./imgs/preview.png" style="width:600px;"/>
 
@@ -25,7 +25,7 @@
 
 1. clone the repo
 1. Run `update.bat`
-1. Run `config-alacritty.bat`
+1. Run `config.bat`
 
 FLY!!
 
@@ -46,7 +46,7 @@ WIP...
 1. unzip [starship](https://github.com/starship/starship/releases) to `${YOUR_ALACRITTY_PATH}/vendor`
 1. unzip [fzf](https://github.com/junegunn/fzf/releases) to `${YOUR_ALACRITTY_PATH}/vendor/bin`
 1. unzip [zoxide](https://github.com/ajeetdsouza/zoxide/releases) to `${YOUR_ALACRITTY_PATH}/vendor/bin`
-1. Run `config-alacritty.bat`
+1. Run `config.bat`
 
 **Mac & Linux Setup**
 

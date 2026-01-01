@@ -2,15 +2,7 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 
--- shell prog
-config.default_prog = {
-  'cmd.exe',
-  '/s',
-  '/k',
-  'D:\\alacritty\\settings\\init.bat',
-}
-
-config.default_cwd = 'D:\\'
+config.default_cwd = 'C:\\'
 config.set_environment_variables = {
   TERM = 'wezterm',
 }
