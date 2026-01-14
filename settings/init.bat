@@ -14,10 +14,6 @@ set __DBG_INFO__=0
 :: change lang to utf8
 set LANG=en_US.utf8
 
-:: change chcp to utf8
-chcp 65001
-cls
-
 :: find root dir
 if not defined AL_ROOT (
   for /f "delims=" %%i in ("%~dp0\..") do (
