@@ -15,10 +15,9 @@
       "with_arguments": {
         "program": "cmd.exe",
         "args": [
-          "cmd.exe",
           "/s",
           "/k",
-          "D:\\alacritty\\settings\\init.bat"
+          "c:\\bin\\alacritty\\settings\\init.bat"
         ],
       },
     },
