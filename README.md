@@ -1,24 +1,5 @@
 # Terminal Settings (mainly for Alacritty & Wezterm)
 
-<img src="./imgs/preview.png" style="width:600px;"/>
-
-## Features
-
-<div style="position: relative; width:600px;">
-  <img src="./imgs/fast_cd.gif"/>
-  <p style="position: absolute; bottom: 10px; right: 10px; color: white;">Fast access directory</p>
-</div>
-
-<div style="position: relative; width:600px;">
-  <img src="./imgs/fzf_search.gif"/>
-  <p style="position: absolute; bottom: 10px; right: 10px; color: white;">Fuzz search files</p>
-</div>
-
-<div style="position: relative; width:600px;">
-  <img src="./imgs/git_complete.gif"/>
-  <p style="position: absolute; bottom: 10px; right: 10px; color: white;">Command completions</p>
-</div>
-
 ## Install (quick)
 
 **Windows Setup**
@@ -37,7 +18,7 @@ WIP...
 
 **Windows Setup**
 
-1. `git clone git@github.com:jwu/alacritty-settings.git ${YOUR_ALACRITTY_PATH}`
+1. `git clone git@github.com:jwu/settings.git ${YOUR_ALACRITTY_PATH}`
 1. install [alacritty](https://github.com/alacritty/alacritty/releases) to `${YOUR_ALACRITTY_PATH}`
 1. install [FiraMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraMono.zip)
 1. unzip [clink](https://github.com/chrisant996/clink/releases) to `${YOUR_ALACRITTY_PATH}/vendor/clink`
@@ -50,7 +31,7 @@ WIP...
 
 **Mac & Linux Setup**
 
-1. `git clone git@github.com:jwu/alacritty-settings.git ${YOUR_ALACRITTY_PATH}`
+1. `git clone git@github.com:jwu/settings.git ${YOUR_ALACRITTY_PATH}`
 1. install [alacritty](https://github.com/alacritty/alacritty/releases) to `${YOUR_ALACRITTY_PATH}`
 1. install [FiraMono Nerd Font](https://www.nerdfonts.com/font-downloads)
 1. install [fishshell](https://fishshell.com/)
@@ -71,7 +52,7 @@ set -x PATH /opt/nvim-linux64/bin $PATH
 set -x LANG "en_US.UTF-8"
 
 # NOTE: in ubuntu, this doesn't work
-# set -x STARSHIP_CONFIG "~/alacritty-settings/settings.mac/starship.toml"
+# set -x STARSHIP_CONFIG "~/settings/settings.mac/starship.toml"
 
 starship init fish | source
 zoxide init fish | source
@@ -166,7 +147,7 @@ shell:
 export PATH=~/bin:/usr/local/bin:$PATH
 export ZSH=~/.oh-my-zsh
 export LANG=en_US.UTF-8
-export STARSHIP_CONFIG=~/alacritty-settings/settings.mac/starship.toml
+export STARSHIP_CONFIG=~/settings/settings.mac/starship.toml
 
 ZSH_THEME="dracula"
 
@@ -188,7 +169,7 @@ set -x PATH /opt/nvim-linux64/bin $PATH
 set -x LANG "en_US.UTF-8"
 
 # NOTE: in ubuntu, this doesn't work
-# set -x STARSHIP_CONFIG "~/alacritty-settings/settings.mac/starship.toml"
+# set -x STARSHIP_CONFIG "~/settings/settings.mac/starship.toml"
 
 starship init fish | source
 zoxide init fish | source

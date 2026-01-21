@@ -2,7 +2,17 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 
-config.default_cwd = 'C:\\'
+local mod_key = 'CMD'
+local font_size = 16.0
+local default_cwd = '~'
+
+if wezterm.target_triple:find("windows") then
+  default_cwd = 'c:\\bin'
+  mod_key = 'CTRL'
+  font_size = 12.5
+end
+
+config.default_cwd = default_cwd
 config.set_environment_variables = {
   TERM = 'wezterm',
 }
@@ -61,7 +71,7 @@ config.initial_rows = nil
 -- Font
 ----------------------------------------------------------------------
 
-config.font_size = 12.5
+config.font_size = font_size
 config.freetype_load_target = "Light"
 config.freetype_render_target = "Light"
 config.freetype_load_flags = "NO_HINTING"
@@ -147,12 +157,12 @@ config.keys = {
   -- new & close
   {
     key = 'n',
-    mods = 'CTRL',
+    mods = mod_key,
     action = wezterm.action.SpawnTab('CurrentPaneDomain'),
   },
   {
     key = 'w',
-    mods = 'CTRL',
+    mods = mod_key,
     action = wezterm.action.CloseCurrentPane { confirm = false },
   },
   -- {
@@ -186,7 +196,7 @@ config.keys = {
   -- split pane
   {
     key = 'LeftArrow',
-    mods = 'CTRL',
+    mods = mod_key,
     action = wezterm.action.SplitPane {
       direction = 'Left',
       size = { Percent = 50 },
@@ -194,7 +204,7 @@ config.keys = {
   },
   {
     key = 'RightArrow',
-    mods = 'CTRL',
+    mods = mod_key,
     action = wezterm.action.SplitPane {
       direction = 'Right',
       size = { Percent = 50 },
@@ -202,7 +212,7 @@ config.keys = {
   },
   {
     key = 'UpArrow',
-    mods = 'CTRL',
+    mods = mod_key,
     action = wezterm.action.SplitPane {
       direction = 'Up',
       size = { Percent = 50 },
@@ -210,7 +220,7 @@ config.keys = {
   },
   {
     key = 'DownArrow',
-    mods = 'CTRL',
+    mods = mod_key,
     action = wezterm.action.SplitPane {
       direction = 'Down',
       size = { Percent = 50 },

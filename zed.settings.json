@@ -10,18 +10,6 @@
   "ui_font_family": "FiraMono Nerd Font",
   "ensure_final_newline_on_save": false,
   "format_on_save": "off",
-  "terminal": {
-    "shell": {
-      "with_arguments": {
-        "program": "cmd.exe",
-        "args": [
-          "/s",
-          "/k",
-          "c:\\bin\\alacritty\\settings\\init.bat"
-        ],
-      },
-    },
-  },
   "buffer_line_height": "standard",
   "tab_size": 2,
   "vim_mode": true,

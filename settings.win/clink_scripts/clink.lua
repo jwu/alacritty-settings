@@ -16,13 +16,13 @@ end
 -- use starship for prompt
 ----------------------------------------
 
-local starship_exe = clink.get_env('AL_VENDOR')..'/starship'
+local starship_exe = clink.get_env('MY_VENDOR')..'/starship'
 load(io.popen(starship_exe..' init cmd'):read("*a"))()
 
 -- use clink-completions for completions
 ----------------------------------------
 
-local completions_dir = clink.get_env('AL_VENDOR')..'/clink-completions/'
+local completions_dir = clink.get_env('MY_VENDOR')..'/clink-completions/'
 
 -- Execute '.init.lua' first to ensure package.path is set properly
 dofile(completions_dir..'!init.lua')

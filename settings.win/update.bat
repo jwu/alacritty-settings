@@ -5,11 +5,11 @@ setlocal enabledelayedexpansion
 :: version setup
 set "AL_VER=v0.16.1"
 set "FONT_VER=v3.4.0"
-set "STARSHIP_VER=v1.24.1"
-set "CLINK_URL=https://github.com/chrisant996/clink/releases/download/v1.9.3/clink.1.9.3.0ef759.zip"
+set "STARSHIP_VER=v1.24.2"
+set "CLINK_URL=https://github.com/chrisant996/clink/releases/download/v1.9.9/clink.1.9.9.3fd236.zip"
 set "CLINK_COMP_VER=0.6.7"
-set "GIT_VER=2.42.0.2"
-set "GIT_VER_WIN=2.42.0.windows.2"
+set "GIT_VER=2.52.0"
+set "GIT_VER_WIN=2.52.0.windows.1"
 set "FZF_VER=0.67.0"
 set "Z_VER=0.9.8"
 
