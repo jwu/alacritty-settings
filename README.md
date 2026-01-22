@@ -36,6 +36,9 @@
    - [Starship](https://starship.rs/) (终端提示符)
    - [Clink](https://github.com/chrisant996/clink) (增强 CMD 体验)
    - [Git for Windows](https://gitforwindows.org/)
+   - [fzf](https://github.com/junegunn/fzf) (模糊搜索)
+   - [fd](https://github.com/sharkdp/fd) (更快的 find)
+   - [bat](https://github.com/sharkdp/bat) (更好的 cat)
 
 2. **配置文件映射**:
    - **Alacritty**: 创建 `%APPDATA%\alacritty\alacritty.toml` 并引用 `win/alacritty.toml`。
@@ -73,7 +76,7 @@
 2. **安装软件包**:
    ```bash
    # 命令行工具
-   brew install starship zoxide neovim fzf lsd
+   brew install starship zoxide neovim fzf lsd fd bat
    # GUI 应用
    brew install --cask wezterm alacritty neovide zed
    ```
@@ -103,7 +106,7 @@
 1. **安装工具**:
    使用你的发行版包管理器 (apt, pacman, yum 等) 或参考官方文档安装：
    - `alacritty` 或 `wezterm` (终端模拟器)
-   - `fish` (推荐 Shell), `starship`, `git`, `neovim`, `fzf`, `lsd`
+   - `fish` (推荐 Shell), `starship`, `git`, `neovim`, `fzf`, `lsd`, `fd`, `bat`
 
 2. **配置文件映射**:
    - **Fish Shell**: 编辑 `~/.config/fish/config.fish`，添加环境变量初始化。
@@ -141,9 +144,9 @@
   - [z](https://github.com/ajeetdsouza/zoxide)
   - [fzf](https://github.com/junegunn/fzf)
     - [fd](https://github.com/sharkdp/fd)
+    - [bat](https://github.com/sharkdp/bat)
   - [eza](https://github.com/eza-community/eza)
     - [lsd](https://github.com/Peltoche/lsd)
-  - [bat](https://github.com/sharkdp/bat)
   - [procs](https://github.com/dalance/procs)
   - [btm](https://github.com/ClementTsang/bottom)
   - [dust](https://github.com/bootandy/dust)

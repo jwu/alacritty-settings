@@ -12,6 +12,8 @@ set "GIT_VER=2.52.0"
 set "GIT_VER_WIN=2.52.0.windows.1"
 set "FZF_VER=0.67.0"
 set "Z_VER=0.9.8"
+set "FD_VER=10.2.0"
+set "BAT_VER=0.24.0"
 
 :: error handling
 set "ERROR_COUNT=0"
@@ -38,6 +40,8 @@ call :UPDATE_CLINK
 call :UPDATE_GIT
 call :UPDATE_FZF
 call :UPDATE_Z
+call :UPDATE_FD
+call :UPDATE_BAT
 goto:END
 
 :: ========================================
@@ -125,6 +129,60 @@ goto:eof
 :: ========================================
 
 call :DOWNLOAD_AND_EXTRACT "https://github.com/ajeetdsouza/zoxide/releases/download/v%Z_VER%/zoxide-%Z_VER%-x86_64-pc-windows-msvc.zip" "%MY_VENDOR%\zoxide.zip" "%MY_VENDOR%\bin"
+
+goto:eof
+
+:: ========================================
+:UPDATE_FD
+:: ========================================
+
+call :CREATE_DIR_IF_NOT_EXISTS "%MY_VENDOR%\bin"
+set "FD_ZIP_URL=https://github.com/sharkdp/fd/releases/download/v%FD_VER%/fd-v%FD_VER%-x86_64-pc-windows-msvc.zip"
+set "FD_DIR_NAME=fd-v%FD_VER%-x86_64-pc-windows-msvc"
+
+echo download fd
+curl "%FD_ZIP_URL%" -L --progress-bar -o "%MY_VENDOR%\fd.zip"
+
+echo extract fd
+tar -xf "%MY_VENDOR%\fd.zip" -C "%MY_VENDOR%"
+
+if exist "%MY_VENDOR%\%FD_DIR_NAME%\fd.exe" (
+  echo move fd.exe to bin
+  move /y "%MY_VENDOR%\%FD_DIR_NAME%\fd.exe" "%MY_VENDOR%\bin\"
+  echo clean up fd dir
+  rd /s /q "%MY_VENDOR%\%FD_DIR_NAME%"
+) else (
+  echo Error: fd.exe not found in extracted directory
+  set /a "ERROR_COUNT+=1"
+)
+del "%MY_VENDOR%\fd.zip"
+
+goto:eof
+
+:: ========================================
+:UPDATE_BAT
+:: ========================================
+
+call :CREATE_DIR_IF_NOT_EXISTS "%MY_VENDOR%\bin"
+set "BAT_ZIP_URL=https://github.com/sharkdp/bat/releases/download/v%BAT_VER%/bat-v%BAT_VER%-x86_64-pc-windows-msvc.zip"
+set "BAT_DIR_NAME=bat-v%BAT_VER%-x86_64-pc-windows-msvc"
+
+echo download bat
+curl "%BAT_ZIP_URL%" -L --progress-bar -o "%MY_VENDOR%\bat.zip"
+
+echo extract bat
+tar -xf "%MY_VENDOR%\bat.zip" -C "%MY_VENDOR%"
+
+if exist "%MY_VENDOR%\%BAT_DIR_NAME%\bat.exe" (
+  echo move bat.exe to bin
+  move /y "%MY_VENDOR%\%BAT_DIR_NAME%\bat.exe" "%MY_VENDOR%\bin\"
+  echo clean up bat dir
+  rd /s /q "%MY_VENDOR%\%BAT_DIR_NAME%"
+) else (
+  echo Error: bat.exe not found in extracted directory
+  set /a "ERROR_COUNT+=1"
+)
+del "%MY_VENDOR%\bat.zip"
 
 goto:eof
 

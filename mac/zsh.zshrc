@@ -32,3 +32,20 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 . "$HOME/.local/bin/env"
+
+# fzf
+source <(fzf --zsh)
+
+# use fd instead of find for better performance
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+# better ctrl-r
+export FZF_DEFAULT_OPTS="
+  --height 40% --layout=reverse
+  --border --preview 'echo {}'
+  --preview-window down:3:hidden:wrap
+  --bind '?:toggle-preview'"
+# better ctrl-t
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"

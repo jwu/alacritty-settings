@@ -31,6 +31,8 @@ PACKAGES=(
     "neovim"
     "fzf"
     "lsd"
+    "fd"
+    "bat"
 )
 
 CASKS=(
