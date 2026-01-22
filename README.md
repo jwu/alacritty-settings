@@ -114,6 +114,44 @@
    - **Starship**: 复制 `linux/starship.toml` 到 `~/.config/starship.toml`。
    - **Neovim**: 复制 `common/neovim.init.lua` 到 `~/.config/nvim/init.lua`。
 
+## Neovim + NeoVide 手动安装手册
+
+### Windows
+
+1. 安装 [nvim](https://neovim.io/)
+1. 安装 [neovide](https://neovide.dev/)
+  1. 先运行一下
+1. 复制 `init.lua` 到 `c:\Users\${YOUR_NAME}\AppData\Local\nvim\init.lua`
+1. 复制 `config.toml` 到 `c:\Users\${YOUR_NAME}\AppData\Roaming\neovide\config.toml`
+1. 安装 [lazy.nvim](https://github.com/folke/lazy.nvim)
+1. 安装 [rg](https://github.com/BurntSushi/ripgrep)
+1. 安装 `fonts`
+1. 编译 `nvim-treesitter` parsers
+  1. 阅读 [MSVC](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support#msvc) session
+  1. 安装 [Visual Studio Build Tools](https://visualstudio.microsoft.com/zh-hans/downloads/?q=build+tools+for+visual+studio)
+  1. 打开 `x64 Native Tools Command Prompt`
+  1. 打开 `neovide`
+  1. 输入 `:TSUpdate`
+  1. 等待安装结束
+
+### Linux
+
+1. 安装 [nvim](https://neovim.io/)
+  1. `sudo cp -r nvim-linux64/bin/ /usr/`
+  1. `sudo cp -r nvim-linux64/lib/ /usr/`
+  1. `sudo cp -r nvim-linux64/share/ /usr/`
+1. 安装 [neovide](https://neovide.dev/)
+  1. `sudo cp neovide-linux-x86_64/neovide /usr/bin/`
+  1. 更新 ubuntu desktop
+    1. `sudo desktop-file-install neovide.desktop`
+    1. `sudo update-desktop-database`
+1. 复制 `init.lua` 到 `~/.config/nvim`
+1. 复制 `config.toml` 到 `~/.config/neovide`
+1. 安装 [lazy.nvim](https://github.com/folke/lazy.nvim)
+1. 安装 [rg](https://github.com/BurntSushi/ripgrep)
+1. 安装 `fonts`
+1. 编译 `nvim-treesitter` parsers
+
 ---
 
 ## Reference

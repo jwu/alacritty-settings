@@ -40,13 +40,16 @@ CASKS=(
     "alacritty"
     "neovide"
     "zed"
+    "font-fira-mono-nerd-font"
 )
 
 echo "Installing packages: ${PACKAGES[*]}"
 brew install "${PACKAGES[@]}"
 
 echo "Installing casks: ${CASKS[*]}"
-brew install --cask "${CASKS[@]}" || echo "WezTerm might already be installed via cask."
+# ensure font cask is available (fonts are now in main cask repo, but just in case for older brew setups)
+brew tap homebrew/cask-fonts 2>/dev/null || true
+brew install --cask "${CASKS[@]}" || echo "Some casks might already be installed."
 
 # ==========================================
 # Oh My Zsh Setup
