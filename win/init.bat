@@ -27,7 +27,7 @@ if not defined MY_ROOT (
 :: remove trailing '\' from %MY_ROOT%
 if "%MY_ROOT:~-1%" == "\" set "MY_ROOT=%MY_ROOT:~0,-1%"
 
-set "MY_SETTINGS=%MY_ROOT%\settings.win"
+set "MY_SETTINGS=%MY_ROOT%\win"
 set "MY_VENDOR=%MY_ROOT%\vendor"
 
 :: add aliases

@@ -30,10 +30,14 @@ PACKAGES=(
     "zoxide"
     "neovim"
     "fzf"
+    "lsd"
 )
 
 CASKS=(
     "wezterm"
+    "alacritty"
+    "neovide"
+    "zed"
 )
 
 echo "Installing packages: ${PACKAGES[*]}"
@@ -103,11 +107,41 @@ echo "Configuring WezTerm..."
 backup_file "$HOME/.wezterm.lua"
 cp "$ROOT_DIR/wezterm.lua" "$HOME/.wezterm.lua"
 
+# Alacritty
+echo "Configuring Alacritty..."
+mkdir -p "$HOME/.config/alacritty"
+backup_file "$HOME/.config/alacritty/alacritty.toml"
+cp "$SCRIPT_DIR/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
+
+# LSD
+echo "Configuring LSD..."
+mkdir -p "$HOME/.config/lsd"
+backup_file "$HOME/.config/lsd/config.yaml"
+cp "$ROOT_DIR/lsd.yaml" "$HOME/.config/lsd/config.yaml"
+
 # Neovim
 echo "Configuring Neovim..."
 mkdir -p "$HOME/.config/nvim"
 backup_file "$HOME/.config/nvim/init.lua"
 cp "$ROOT_DIR/neovim.init.lua" "$HOME/.config/nvim/init.lua"
+
+# Neovide
+echo "Configuring Neovide..."
+mkdir -p "$HOME/.config/neovide"
+backup_file "$HOME/.config/neovide/config.toml"
+cp "$ROOT_DIR/neovide.config.toml" "$HOME/.config/neovide/config.toml"
+
+# Omnisharp
+echo "Configuring Omnisharp..."
+mkdir -p "$HOME/.omnisharp"
+backup_file "$HOME/.omnisharp/omnisharp.json"
+cp "$ROOT_DIR/omnisharp.json" "$HOME/.omnisharp/omnisharp.json"
+
+# Zed
+echo "Configuring Zed..."
+mkdir -p "$HOME/.config/zed"
+backup_file "$HOME/.config/zed/settings.json"
+cp "$ROOT_DIR/zed.settings.json" "$HOME/.config/zed/settings.json"
 
 # Starship
 echo "Configuring Starship..."
@@ -118,7 +152,7 @@ cp "$SCRIPT_DIR/starship.toml" "$HOME/.config/starship.toml"
 # .zshrc
 echo "Configuring .zshrc..."
 backup_file "$HOME/.zshrc"
-cp "$SCRIPT_DIR/zshrc" "$HOME/.zshrc"
+cp "$SCRIPT_DIR/zsh.zshrc" "$HOME/.zshrc"
 
 echo ">>> Installation Complete!"
 echo "    A new .zshrc has been created."
