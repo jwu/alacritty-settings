@@ -578,7 +578,7 @@ require('lazy').setup({
       local function is_nvim_tree_open()
         for _, win in ipairs(vim.api.nvim_list_wins()) do
           local bufnr = vim.api.nvim_win_get_buf(win)
-          local filetype = vim.api.nvim_buf_get_option_value(bufnr, 'filetype')
+          local filetype = vim.api.nvim_get_option_value('filetype', { buf = bufnr })
           if filetype == 'NvimTree' then
             return true
           end
