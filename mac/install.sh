@@ -105,7 +105,7 @@ echo ">>> Copying configuration files..."
 # WezTerm
 echo "Configuring WezTerm..."
 backup_file "$HOME/.wezterm.lua"
-cp "$ROOT_DIR/wezterm.lua" "$HOME/.wezterm.lua"
+cp "$ROOT_DIR/common/wezterm.lua" "$HOME/.wezterm.lua"
 
 # Alacritty
 echo "Configuring Alacritty..."
@@ -117,31 +117,31 @@ cp "$SCRIPT_DIR/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 echo "Configuring LSD..."
 mkdir -p "$HOME/.config/lsd"
 backup_file "$HOME/.config/lsd/config.yaml"
-cp "$ROOT_DIR/lsd.yaml" "$HOME/.config/lsd/config.yaml"
+cp "$ROOT_DIR/common/lsd.yaml" "$HOME/.config/lsd/config.yaml"
 
 # Neovim
 echo "Configuring Neovim..."
 mkdir -p "$HOME/.config/nvim"
 backup_file "$HOME/.config/nvim/init.lua"
-cp "$ROOT_DIR/neovim.init.lua" "$HOME/.config/nvim/init.lua"
+cp "$ROOT_DIR/common/neovim.init.lua" "$HOME/.config/nvim/init.lua"
 
 # Neovide
 echo "Configuring Neovide..."
 mkdir -p "$HOME/.config/neovide"
 backup_file "$HOME/.config/neovide/config.toml"
-cp "$ROOT_DIR/neovide.config.toml" "$HOME/.config/neovide/config.toml"
+cp "$ROOT_DIR/common/neovide.config.toml" "$HOME/.config/neovide/config.toml"
 
 # Omnisharp
 echo "Configuring Omnisharp..."
 mkdir -p "$HOME/.omnisharp"
 backup_file "$HOME/.omnisharp/omnisharp.json"
-cp "$ROOT_DIR/omnisharp.json" "$HOME/.omnisharp/omnisharp.json"
+cp "$ROOT_DIR/common/omnisharp.json" "$HOME/.omnisharp/omnisharp.json"
 
 # Zed
 echo "Configuring Zed..."
 mkdir -p "$HOME/.config/zed"
 backup_file "$HOME/.config/zed/settings.json"
-cp "$ROOT_DIR/zed.settings.json" "$HOME/.config/zed/settings.json"
+cp "$ROOT_DIR/common/zed.settings.json" "$HOME/.config/zed/settings.json"
 
 # Starship
 echo "Configuring Starship..."
