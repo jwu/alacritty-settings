@@ -3,12 +3,14 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 local mod_key = 'CMD'
+local mod_key_2 = 'CMD|SHIFT'
 local font_size = 16.0
 local default_cwd = '~'
 
 if wezterm.target_triple:find("windows") then
   default_cwd = 'c:\\bin'
   mod_key = 'CTRL'
+  mod_key_2 = 'CTRL|SHIFT'
   font_size = 12.5
 end
 
@@ -196,7 +198,7 @@ config.keys = {
   -- split pane
   {
     key = 'LeftArrow',
-    mods = mod_key,
+    mods = mod_key_2,
     action = wezterm.action.SplitPane {
       direction = 'Left',
       size = { Percent = 50 },
@@ -204,7 +206,7 @@ config.keys = {
   },
   {
     key = 'RightArrow',
-    mods = mod_key,
+    mods = mod_key_2,
     action = wezterm.action.SplitPane {
       direction = 'Right',
       size = { Percent = 50 },
@@ -212,7 +214,7 @@ config.keys = {
   },
   {
     key = 'UpArrow',
-    mods = mod_key,
+    mods = mod_key_2,
     action = wezterm.action.SplitPane {
       direction = 'Up',
       size = { Percent = 50 },
@@ -220,7 +222,7 @@ config.keys = {
   },
   {
     key = 'DownArrow',
-    mods = mod_key,
+    mods = mod_key_2,
     action = wezterm.action.SplitPane {
       direction = 'Down',
       size = { Percent = 50 },

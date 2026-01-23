@@ -425,7 +425,7 @@ vim.api.nvim_create_autocmd({'FileType'}, {
 -- disable automaticaly insert current comment leader after hitting <Enter>, 'o' or 'O'
 vim.api.nvim_create_autocmd({'FileType'}, {
   group = ex_group,
-  pattern = {'c', 'cpp', 'cs', 'rust'},
+  pattern = {'c', 'cpp', 'cs', 'rust', 'vim'},
   command = 'set formatoptions-=ro',
 })
 
