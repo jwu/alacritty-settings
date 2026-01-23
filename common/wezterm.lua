@@ -29,7 +29,7 @@ config.hide_tab_bar_if_only_one_tab = false
 -- config.tab_max_width = 16
 
 -- Colors
-config.color_scheme = 'Dracula'
+config.color_scheme = 'OneHalfDark'
 config.window_frame = {
   active_titlebar_bg = '#222222',
   inactive_titlebar_bg = '#222222',
@@ -44,6 +44,18 @@ config.colors = {
       italic = false,
       strikethrough = false,
     },
+  },
+  -- NOTE: We only change Color 8 (use neovim OneDark Comment Color),
+  -- others keep OneHalfDark's colors
+  brights = {
+    '#5c6370', -- Color 8:  Bright Black
+    '#e06c75', -- Color 9:  Bright Red
+    '#98c379', -- Color 10: Bright Green
+    '#e5c07b', -- Color 11: Bright Yellow
+    '#61afef', -- Color 12: Bright Blue
+    '#c678dd', -- Color 13: Bright Magenta
+    '#56b6c2', -- Color 14: Bright Cyan
+    '#dcdfe4', -- Color 15: Bright White
   }
 }
 
