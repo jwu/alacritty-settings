@@ -2,16 +2,19 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 
+local default_cwd = '~'
+local font_size = 16.5
 local mod_key = 'CMD'
 local mod_key_2 = 'CMD|SHIFT'
-local font_size = 16.0
-local default_cwd = '~'
+local font_en = 'FiraMono Nerd Font'
+local font_zh = 'PingFang SC'
 
 if wezterm.target_triple:find("windows") then
   default_cwd = 'c:\\bin'
+  font_size = 12.5
   mod_key = 'CTRL'
   mod_key_2 = 'CTRL|SHIFT'
-  font_size = 12.5
+  font_zh = 'Microsoft YaHei'
 end
 
 config.default_cwd = default_cwd
@@ -52,6 +55,8 @@ config.automatically_reload_config = true
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = true
 config.window_close_confirmation = 'NeverPrompt'
+config.front_end = "WebGpu"
+config.bold_brightens_ansi_colors = true
 
 ----------------------------------------------------------------------
 -- Window
@@ -80,8 +85,12 @@ config.freetype_load_flags = "NO_HINTING"
 
 config.font = wezterm.font_with_fallback({
   {
-    family = 'FiraMono Nerd Font',
-    weight = 'Regular',
+    family = font_en,
+    weight = 'Medium',
+  },
+  {
+    family = font_zh,
+    weight = 'Medium'
   },
 })
 
@@ -89,14 +98,14 @@ config.font_rules = {
   {
     intensity = 'Bold',
     font = wezterm.font({
-      family = 'FiraMono Nerd Font',
+      family = font_en,
       weight = 'Bold',
     }),
   },
   {
     italic = true,
     font = wezterm.font({
-      family = 'FiraMono Nerd Font',
+      family = font_en,
       style = 'Italic',
     }),
   },
@@ -104,7 +113,7 @@ config.font_rules = {
     italic = true,
     intensity = 'Bold',
     font = wezterm.font({
-      family = 'FiraMono Nerd Font',
+      family = font_en,
       weight = 'Bold',
       style = 'Italic',
     }),

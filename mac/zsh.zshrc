@@ -1,5 +1,6 @@
 export PATH=/opt/homebrew/bin:~/bin:/usr/local/bin:$PATH
 export ZSH=~/.oh-my-zsh
+export EDITOR=nvim
 export LANG=en_US.UTF-8
 export STARSHIP_CONFIG=~/bin/settings/mac/starship.toml
 
