@@ -158,9 +158,14 @@ config.visual_bell = {
 config.keys = {
   -- new & close
   {
-    key = 'n',
+    key = 't',
     mods = mod_key,
     action = wezterm.action.SpawnTab('CurrentPaneDomain'),
+  },
+  {
+    key = 'n',
+    mods = mod_key,
+    action = wezterm.action.SpawnWindow,
   },
   {
     key = 'w',
