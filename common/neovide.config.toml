@@ -4,5 +4,4 @@ vsync = true
 maximized = false
 srgb = false
 idle = true
-neovim_bin = "c:/bin/nvim.exe"
 frame = "full"

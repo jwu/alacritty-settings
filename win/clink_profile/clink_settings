@@ -70,6 +70,10 @@ color.yarn.module = bright green
 # type: color
 color.yarn.script = bright blue
 
+# name: Use default key bindings
+# type: boolean
+fzf.default_bindings = True
+
 # name: Sets how command history expansion is applied
 # type: enum
 # options: off,on,not_squoted,not_dquoted,not_quoted

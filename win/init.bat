@@ -28,56 +28,19 @@ if not defined MY_ROOT (
 if "%MY_ROOT:~-1%" == "\" set "MY_ROOT=%MY_ROOT:~0,-1%"
 
 set "MY_SETTINGS=%MY_ROOT%\win"
-set "MY_VENDOR=%MY_ROOT%\vendor"
+set "MY_BIN=%USERPROFILE%\bin"
 
 :: add aliases
 :: ========================================
 
 call "%MY_SETTINGS%\cmds\aliases.cmd"
 
-:: add vendor\bin\ to environment path
+:: add %USERPROFILE%\bin\ to environment path
 :: ========================================
 
-if exist "%MY_VENDOR%\bin" (
-  set "PATH=%PATH%;%MY_VENDOR%\bin"
+if exist "%MY_BIN%" (
+  set "PATH=%PATH%;%MY_BIN%"
 )
-
-:: add git-for-windows to environment path
-:: ========================================
-
-if exist "%MY_VENDOR%\git" (
-  set "MY_GIT_ROOT=%MY_VENDOR%\git"
-  goto :CONFIG_GIT
-) else (
-  goto :NO_GIT
-)
-
-:CONFIG_GIT
-
-:: add {git}\cmd\ to environment path
-if exist "%MY_GIT_ROOT%\cmd\git.exe" (
-  set "PATH=%PATH%;%MY_GIT_ROOT%\cmd"
-)
-
-:: add {git}\usr\bin to environment path
-if exist "%MY_GIT_ROOT%\usr\bin" (
-  set "PATH=%PATH%;%MY_GIT_ROOT%\usr\bin"
-)
-
-:: add {git}\mingw{??}\bin to environment path
-if exist "%MY_GIT_ROOT%\mingw32" (
-  set "PATH=%PATH%;%MY_GIT_ROOT%\mingw32\bin"
-) else if exist "%MY_GIT_ROOT%\mingw64" (
-  set "PATH=%PATH%;%MY_GIT_ROOT%\mingw64\bin"
-)
-
-goto :END_CONFIG_GIT
-
-:: print error if git not found
-:NO_GIT
-echo Error: git not found!
-
-:END_CONFIG_GIT
 
 :: set starship config path before clink
 :: ========================================
@@ -99,7 +62,7 @@ if "%PROCESSOR_ARCHITECTURE%"=="x86" (
   set CLINK_ARCH=x64
 )
 
-"%MY_VENDOR%\clink\clink_%CLINK_ARCH%.exe" inject --quiet --profile "%MY_SETTINGS%\clink_profile" --scripts "%MY_SETTINGS%\clink_scripts"
+"%MY_BIN%\clink\clink_%CLINK_ARCH%.exe" inject --quiet --profile "%MY_SETTINGS%\clink_profile" --scripts "%MY_SETTINGS%\clink_scripts"
 
 :: init end
 :: ========================================
@@ -114,8 +77,8 @@ if %__DBG_INFO__% gtr 0 (
   echo LANG = %LANG%
   echo MY_ROOT = %MY_ROOT%
   echo MY_SETTINGS = %MY_SETTINGS%
-  echo MY_VENDOR = %MY_VENDOR%
   echo MY_GIT_ROOT = %MY_GIT_ROOT%
 )
 
 exit /b
+

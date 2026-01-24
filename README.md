@@ -19,7 +19,7 @@
    ```
 4. 运行更新脚本（自动下载 Alacritty, Starship, Nerd Fonts 等）：
    ```cmd
-   update.bat
+   install.bat
    ```
 5. 运行配置脚本（生成配置文件链接）：
    ```cmd
