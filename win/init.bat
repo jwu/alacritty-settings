@@ -77,7 +77,6 @@ if %__DBG_INFO__% gtr 0 (
   echo LANG = %LANG%
   echo MY_ROOT = %MY_ROOT%
   echo MY_SETTINGS = %MY_SETTINGS%
-  echo MY_GIT_ROOT = %MY_GIT_ROOT%
 )
 
 exit /b
