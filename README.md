@@ -6,7 +6,7 @@
 
 ### 自动配置 (推荐)
 
-此方案会自动下载便携版的工具到 `vendor/` 目录，并配置环境变量和软链接。
+此方案会自动下载便携版的工具到 `%USERPROFILE%\bin` 目录，并配置环境变量和配置文件链接。
 
 1. 打开 CMD 或 PowerShell。
 2. 克隆此仓库（建议路径）：
@@ -17,11 +17,25 @@
    ```cmd
    cd %USERPROFILE%\bin\settings\win
    ```
-4. 运行更新脚本（自动下载 Alacritty, Starship, Nerd Fonts 等）：
+4. 运行安装脚本（自动下载以下工具）：
    ```cmd
    install.bat
    ```
-5. 运行配置脚本（生成配置文件链接）：
+
+   安装的工具包括：
+   - Alacritty v0.16.1 (终端模拟器)
+   - Nerd Fonts (FiraMono) v3.4.0 (图标字体)
+   - Clink v1.9.9 + clink-completions v0.6.7 (增强 CMD)
+   - Starship v1.24.2 (终端提示符)
+   - fzf 0.67.0 (模糊搜索)
+   - zoxide 0.9.8 (智能目录跳转)
+   - fd 10.2.0 (更快的 find)
+   - bat 0.24.0 (更好的 cat)
+   - ripgrep 15.1.0 (更快的 grep)
+   - lsd 1.1.2 (更好的 ls)
+   - coreutils 0.5.0 (Unix 命令工具集)
+
+5. 运行配置脚本（创建配置文件链接）：
    ```cmd
    config.bat
    ```
@@ -31,20 +45,26 @@
 如果你更喜欢手动安装工具，请参考以下步骤：
 
 1. **安装工具**:
-   - [Alacritty](https://github.com/alacritty/alacritty/releases) 或 [WezTerm](https://wezterm.org/) (终端模拟器)
-   - [Nerd Fonts (FiraMono)](https://www.nerdfonts.com/font-downloads) (推荐字体)
-   - [Starship](https://starship.rs/) (终端提示符)
-   - [Clink](https://github.com/chrisant996/clink) (增强 CMD 体验)
+   - [Alacritty](https://github.com/alacritty/alacritty/releases) v0.16.1 (终端模拟器)
+   - [Nerd Fonts (FiraMono)](https://www.nerdfonts.com/font-downloads) v3.4.0 (图标字体)
+   - [Clink](https://github.com/chrisant996/clink) v1.9.9 (增强 CMD 体验)
+   - [clink-completions](https://github.com/vladimir-kotikov/clink-completions) v0.6.7 (Clink 自动补全)
+   - [Starship](https://starship.rs/) v1.24.2 (终端提示符)
+   - [fzf](https://github.com/junegunn/fzf) 0.67.0 (模糊搜索)
+   - [zoxide](https://github.com/ajeetdsouza/zoxide) 0.9.8 (智能目录跳转)
+   - [fd](https://github.com/sharkdp/fd) 10.2.0 (更快的 find)
+   - [bat](https://github.com/sharkdp/bat) 0.24.0 (更好的 cat)
+   - [ripgrep](https://github.com/BurntSushi/ripgrep) 15.1.0 (更快的 grep)
+   - [lsd](https://github.com/Peltoche/lsd) 1.1.2 (更好的 ls)
+   - [coreutils](https://github.com/uutils/coreutils) 0.5.0 (Unix 命令工具集)
    - [Git for Windows](https://gitforwindows.org/)
-   - [fzf](https://github.com/junegunn/fzf) (模糊搜索)
-   - [fd](https://github.com/sharkdp/fd) (更快的 find)
-   - [bat](https://github.com/sharkdp/bat) (更好的 cat)
 
 2. **配置文件映射**:
    - **Alacritty**: 创建 `%APPDATA%\alacritty\alacritty.toml` 并引用 `win/alacritty.toml`。
    - **WezTerm**: 复制或链接 `common/wezterm.lua` 到 `%USERPROFILE%\.wezterm.lua`。
-   - **LSD**: 复制或链接 `common/lsd.yaml` 到 `%APPDATA%\lsd\config.yaml`。
+   - **LSD**: 复制或链接 `common/lsd.yaml` 到 `%USERPROFILE%\.config\lsd\config.yaml`。
    - **Neovim**: 复制或链接 `common/neovim.init.lua` 到 `%LOCALAPPDATA%\nvim\init.lua`。
+   - **NeoVide**: 复制或链接 `common/neovide.config.toml` 到 `%APPDATA%\neovide\config.toml`。
    - **Clink**: 配置 Clink 加载 `win/clink_scripts` 中的脚本。
 
 ---
@@ -181,26 +201,38 @@
   - [rg](https://github.com/BurntSushi/ripgrep)
   - [z](https://github.com/ajeetdsouza/zoxide)
   - [fzf](https://github.com/junegunn/fzf)
-    - [fd](https://github.com/sharkdp/fd)
-    - [bat](https://github.com/sharkdp/bat)
-  - [eza](https://github.com/eza-community/eza)
-    - [lsd](https://github.com/Peltoche/lsd)
-  - [procs](https://github.com/dalance/procs)
-  - [btm](https://github.com/ClementTsang/bottom)
+  - [fd](https://github.com/sharkdp/fd)
+  - [bat](https://github.com/sharkdp/bat)
+  - [lsd](https://github.com/Peltoche/lsd)
+    - [eza](https://github.com/eza-community/eza)
+  - [coreutils](https://github.com/uutils/coreutils)
   - [dust](https://github.com/bootandy/dust)
   - [delta](https://github.com/dandavison/delta)
   - [sd](https://github.com/chmln/sd)
+  - [procs](https://github.com/dalance/procs)
+- utils (tui)
+  - [yazi](https://github.com/sxyazi/yazi)
+  - [gitui](https://github.com/gitui-org/gitui)
+  - [trippy](https://github.com/fujiapple852/trippy)
+  - [bandwhich](https://github.com/imsnif/bandwhich)
+  - [btm](https://github.com/ClementTsang/bottom)
+    - [btop](https://github.com/aristocratos/btop)
 - utils (dev)
   - [opencode](https://opencode.ai/)
-  - [mise](https://github.com/jdx/mise)
+  - [hexyl](https://github.com/sharkdp/hexyl)
   - [xh](https://github.com/ducaale/xh)
+    - [rustscan](https://github.com/bee-san/RustScan)
   - [yq](https://github.com/mikefarah/yq)
     - [jq](https://github.com/stedolan/jq)
   - [sttr](https://github.com/abhimanyu003/sttr)
   - [grex](https://github.com/pemistahl/grex)
   - [hyperfine](https://github.com/sharkdp/hyperfine)
   - [navi](https://github.com/denisidoro/navi)
-  - [yazi](https://github.com/sxyazi/yazi)
+- utils (package management)
+  - [uv](https://github.com/astral-sh/uv)
+  - [bun](https://github.com/oven-sh/bun)
+  - [nvm](https://github.com/nvm-sh/nvm)
+  - [mise](https://github.com/jdx/mise)
 - utils (okay)
   - [xplr](https://github.com/sayanarijit/xplr)
   - [s](https://github.com/zquestz/s)
