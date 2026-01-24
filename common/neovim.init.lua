@@ -32,24 +32,24 @@ if vim.g.neovide then
 
   -- IME only work in Insert Mode
   local function set_ime(args)
-    if args.event:match("Enter$") then
+    if args.event:match('Enter$') then
       vim.g.neovide_input_ime = true
     else
       vim.g.neovide_input_ime = false
     end
   end
-  local ime_input = vim.api.nvim_create_augroup("ime_input", { clear = true })
+  local ime_input = vim.api.nvim_create_augroup('ime_input', { clear = true })
 
-  vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
+  vim.api.nvim_create_autocmd({ 'InsertEnter', 'InsertLeave' }, {
     group = ime_input,
-    pattern = "*",
+    pattern = '*',
     callback = set_ime
   })
 
   -- NOTE: Disabled
-  -- vim.api.nvim_create_autocmd({ "CmdlineEnter", "CmdlineLeave" }, {
+  -- vim.api.nvim_create_autocmd({ 'CmdlineEnter', 'CmdlineLeave' }, {
   --   group = ime_input,
-  --   pattern = "[/\\?]",
+  --   pattern = '[/\\?]',
   --   callback = set_ime
   -- })
 end
@@ -204,10 +204,10 @@ vim.diagnostic.config({
   severity_sort = true,
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = " ",
-      [vim.diagnostic.severity.WARN] = " ",
-      [vim.diagnostic.severity.INFO] = " ",
-      [vim.diagnostic.severity.HINT] = " ",
+      [vim.diagnostic.severity.ERROR] = ' ',
+      [vim.diagnostic.severity.WARN] = ' ',
+      [vim.diagnostic.severity.INFO] = ' ',
+      [vim.diagnostic.severity.HINT] = ' ',
     }
   }
 })
@@ -226,6 +226,7 @@ vim.opt.cinoptions = '>s,e0,n0,f0,{0,}0,^0,L0:0,=s,l0,b0,g0,hs,N0,E0,ps,ts,is,+s
 -- default '0{,0},0),:,0#,!^F,o,O,e' disable 0# for not ident preprocess
 -- set cinkeys=0{,0},0),:,!^F,o,O,e
 
+vim.opt.smartindent = true
 vim.opt.cindent = true -- set cindent on to autoinent when editing c/c++ file
 vim.opt.shiftwidth = 2 -- 2 shift width
 vim.opt.tabstop = 2 -- set tabstop to 4 characters
@@ -244,7 +245,7 @@ vim.opt.completeopt = 'menu,menuone,noinsert,noselect'
 vim.opt.foldmethod = 'marker'
 vim.opt.foldmarker = '{,}'
 vim.opt.foldlevel = 9999
-vim.opt.diffopt = { "internal", "filler", "closeoff", "algorithm:histogram", "indent-heuristic", "linematch:60", "context:9999" }
+vim.opt.diffopt = { 'internal', 'filler', 'closeoff', 'algorithm:histogram', 'indent-heuristic', 'linematch:60', 'context:9999' }
 
 --------------------------------------------------------------------
 -- Desc: Search
@@ -557,12 +558,12 @@ require('lazy').setup({
       -- setup neovide window-title color after onedark loaded
       if vim.g.neovide then
         vim.g.neovide_title_background_color = string.format(
-          "%x",
-          vim.api.nvim_get_hl(0, {id=vim.api.nvim_get_hl_id_by_name("Normal")}).bg
+          '%x',
+          vim.api.nvim_get_hl(0, {id=vim.api.nvim_get_hl_id_by_name('Normal')}).bg
         )
         vim.g.neovide_title_text_color = string.format(
-          "%x",
-          vim.api.nvim_get_hl(0, {id=vim.api.nvim_get_hl_id_by_name("Normal")}).fg
+          '%x',
+          vim.api.nvim_get_hl(0, {id=vim.api.nvim_get_hl_id_by_name('Normal')}).fg
         )
       end
     end
@@ -978,29 +979,41 @@ require('lazy').setup({
 
   {
     'nvim-treesitter/nvim-treesitter',
-    enabled = true,
+    branch = 'main',
+    lazy = false,
     build = ':TSUpdate',
     config = function()
-      require('nvim-treesitter.config').setup {
-        ensure_installed = {
-          'c', 'cpp', 'c_sharp', 'rust', 'go',
-          'python', 'lua', 'javascript', 'typescript', 'vim',
-          'css', 'hlsl', 'glsl', 'wgsl',
-          'json', 'toml', 'yaml', 'xml', 'html',
-          'luadoc', 'vimdoc', 'markdown', 'markdown_inline',
-          'diff', 'query',
-        },
-        sync_install = false,
-        auto_install = false,
-        ignore_install = {},
-        highlight = {
-          enable = true,
-          disable = {},
-          additional_vim_regex_highlighting = false,
-        },
+      require('nvim-treesitter').setup {
+        compilers = { 'zig', 'clang', 'gcc', 'cl' },
+        install_dir = vim.fn.stdpath('data') .. '/site'
       }
+
+      require('nvim-treesitter').install {
+        'c', 'cpp', 'c_sharp', 'rust', 'go',
+        'python', 'lua', 'javascript', 'typescript', 'vim',
+        'css', 'hlsl', 'glsl', 'wgsl',
+        'json', 'toml', 'yaml', 'xml', 'html',
+        'luadoc', 'vimdoc', 'markdown', 'markdown_inline',
+        'diff', 'query',
+      }
+
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function()
+          local ok, _ = pcall(vim.treesitter.start)
+
+          if ok then
+            vim.opt_local.foldmethod = 'expr'
+            vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+            vim.opt_local.foldlevel = 9999
+            vim.opt_local.foldtext = ''
+
+            vim.bo.indentexpr = 'v:lua.vim.treesitter.indent.get()'
+          end
+        end,
+      })
     end,
   },
+
 
   'tikhomirov/vim-glsl',
   'drichardson/vex.vim',
@@ -1084,7 +1097,7 @@ require('lazy').setup({
         },
       },
 
-      fuzzy = { implementation = "prefer_rust_with_warning" }
+      fuzzy = { implementation = 'prefer_rust_with_warning' }
     },
   },
 
@@ -1297,10 +1310,10 @@ require('lazy').setup({
   },
 
   {
-    "mason-org/mason-lspconfig.nvim",
+    'mason-org/mason-lspconfig.nvim',
     dependencies = {
-      { "mason-org/mason.nvim", opts = {} },
-      "neovim/nvim-lspconfig",
+      { 'mason-org/mason.nvim', opts = {} },
+      'neovim/nvim-lspconfig',
     },
     opts = {
       ensure_installed = {
@@ -1316,13 +1329,13 @@ require('lazy').setup({
   },
 
   {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
+    'folke/lazydev.nvim',
+    ft = 'lua', -- only load on lua files
     opts = {
       library = {
         -- See the configuration section for more details
         -- Load luvit types when the `vim.uv` word is found
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
       },
     },
   },
