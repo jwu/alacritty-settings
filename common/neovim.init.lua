@@ -17,8 +17,8 @@ if vim.g.neovide then
 
   -- animation
   vim.g.neovide_position_animation_length = 0.3
-  vim.g.neovide_scroll_animation_length = 0.3
-  vim.g.neovide_scroll_animation_far_lines = 0.3
+  vim.g.neovide_scroll_animation_length = 0.0
+  vim.g.neovide_scroll_animation_far_lines = 0.0
   vim.g.neovide_cursor_animation_length = 0.0
   vim.g.neovide_cursor_short_animation_length = 0.0
   vim.g.neovide_cursor_trail_size = 0.0
@@ -155,6 +155,11 @@ vim.opt.wrap = false -- do not wrap text
 vim.opt.autochdir = false -- no autochchdir
 
 if WINDOWS() then
+  if vim.g.neovide then
+    vim.g.neovide_scroll_animation_length = 0.3
+    vim.g.neovide_scroll_animation_far_lines = 0.3
+  end
+
   vim.opt.guifont = 'FiraMono Nerd Font:h12'
   vim.opt.guifontwide = 'Microsoft YaHei Mono:h12'
 elseif OSX() then
