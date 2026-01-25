@@ -1,0 +1,15 @@
+[core]
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  light = false
+  line-numbers = true
+  side-by-side = true
+  syntax-theme = Dracula
+[user]
+	email = karasaya@gmail.com
+	name = Johnny Wu
+[core]
+	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe

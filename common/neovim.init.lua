@@ -16,9 +16,9 @@ if vim.g.neovide then
   vim.g.neovide_underline_stroke_scale = 1.0
 
   -- animation
-  vim.g.neovide_position_animation_length = 0.0
-  vim.g.neovide_scroll_animation_length = 0.0
-  vim.g.neovide_scroll_animation_far_lines = 0.0
+  vim.g.neovide_position_animation_length = 0.3
+  vim.g.neovide_scroll_animation_length = 0.3
+  vim.g.neovide_scroll_animation_far_lines = 0.3
   vim.g.neovide_cursor_animation_length = 0.0
   vim.g.neovide_cursor_short_animation_length = 0.0
   vim.g.neovide_cursor_trail_size = 0.0

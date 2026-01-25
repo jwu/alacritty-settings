@@ -12,6 +12,7 @@ set "FZF_VER=0.67.0"
 set "Z_VER=0.9.8"
 set "FD_VER=10.2.0"
 set "BAT_VER=0.24.0"
+set "DELTA_VER=0.18.2"
 set "RIPGREP_VER=15.1.0"
 set "LSD_VER=1.1.2"
 set "COREUTILS_VER=0.5.0"
@@ -47,6 +48,7 @@ call :UPDATE_LSD
 call :UPDATE_COREUTILS
 call :UPDATE_BAT
 call :UPDATE_RIPGREP
+call :UPDATE_DELTA
 goto:END
 
 :: ========================================
@@ -136,25 +138,10 @@ goto:eof
 :UPDATE_FD
 :: ========================================
 
-set "FD_ZIP_URL=https://github.com/sharkdp/fd/releases/download/v%FD_VER%/fd-v%FD_VER%-x86_64-pc-windows-msvc.zip"
 set "FD_DIR_NAME=fd-v%FD_VER%-x86_64-pc-windows-msvc"
+set "FD_ZIP_URL=https://github.com/sharkdp/fd/releases/download/v%FD_VER%/%FD_DIR_NAME%.zip"
 
-echo download fd
-curl "%FD_ZIP_URL%" -L --progress-bar -o "%TARGET_DIR%\fd.zip"
-
-echo extract fd
-tar -xf "%TARGET_DIR%\fd.zip" -C "%TARGET_DIR%"
-
-if exist "%TARGET_DIR%\%FD_DIR_NAME%\fd.exe" (
-  echo move fd.exe to bin
-  move /y "%TARGET_DIR%\%FD_DIR_NAME%\fd.exe" "%TARGET_DIR%\"
-  echo clean up fd dir
-  rd /s /q "%TARGET_DIR%\%FD_DIR_NAME%"
-) else (
-  echo Error: fd.exe not found in extracted directory
-  set /a "ERROR_COUNT+=1"
-)
-del "%TARGET_DIR%\fd.zip"
+call :DOWNLOAD_EXTRACT_AND_MOVE "%FD_ZIP_URL%" "%FD_DIR_NAME%" "fd"
 echo fd installed successfully
 echo ========================================
 goto:eof
@@ -164,16 +151,9 @@ goto:eof
 :: ========================================
 
 set "LSD_DIR_NAME=lsd-v%LSD_VER%-x86_64-pc-windows-msvc"
+set "LSD_ZIP_URL=https://github.com/Peltoche/lsd/releases/download/v%LSD_VER%/%LSD_DIR_NAME%.zip"
 
-call :DOWNLOAD_AND_EXTRACT "https://github.com/Peltoche/lsd/releases/download/v%LSD_VER%/lsd-v%LSD_VER%-x86_64-pc-windows-msvc.zip" "%TARGET_DIR%\lsd.zip" "%TARGET_DIR%"
-
-if exist "%TARGET_DIR%\%LSD_DIR_NAME%\lsd.exe" (
-  move /y "%TARGET_DIR%\%LSD_DIR_NAME%\lsd.exe" "%TARGET_DIR%\"
-  rd /s /q "%TARGET_DIR%\%LSD_DIR_NAME%"
-) else (
-  echo Error: lsd.exe not found in extracted directory
-  set /a "ERROR_COUNT+=1"
-)
+call :DOWNLOAD_EXTRACT_AND_MOVE "%LSD_ZIP_URL%" "%LSD_DIR_NAME%" "lsd"
 echo lsd installed successfully
 echo ========================================
 goto:eof
@@ -183,16 +163,9 @@ goto:eof
 :: ========================================
 
 set "COREUTILS_DIR_NAME=coreutils-%COREUTILS_VER%-x86_64-pc-windows-msvc"
+set "COREUTILS_ZIP_URL=https://github.com/uutils/coreutils/releases/download/%COREUTILS_VER%/%COREUTILS_DIR_NAME%.zip"
 
-call :DOWNLOAD_AND_EXTRACT "https://github.com/uutils/coreutils/releases/download/%COREUTILS_VER%/coreutils-%COREUTILS_VER%-x86_64-pc-windows-msvc.zip" "%TARGET_DIR%\coreutils.zip" "%TARGET_DIR%"
-
-if exist "%TARGET_DIR%\%COREUTILS_DIR_NAME%\coreutils.exe" (
-  move /y "%TARGET_DIR%\%COREUTILS_DIR_NAME%\coreutils.exe" "%TARGET_DIR%\"
-  rd /s /q "%TARGET_DIR%\%COREUTILS_DIR_NAME%"
-) else (
-  echo Error: coreutils.exe not found in extracted directory
-  set /a "ERROR_COUNT+=1"
-)
+call :DOWNLOAD_EXTRACT_AND_MOVE "%COREUTILS_ZIP_URL%" "%COREUTILS_DIR_NAME%" "coreutils"
 echo coreutils installed successfully
 echo ========================================
 goto:eof
@@ -201,25 +174,10 @@ goto:eof
 :UPDATE_BAT
 :: ========================================
 
-set "BAT_ZIP_URL=https://github.com/sharkdp/bat/releases/download/v%BAT_VER%/bat-v%BAT_VER%-x86_64-pc-windows-msvc.zip"
 set "BAT_DIR_NAME=bat-v%BAT_VER%-x86_64-pc-windows-msvc"
+set "BAT_ZIP_URL=https://github.com/sharkdp/bat/releases/download/v%BAT_VER%/%BAT_DIR_NAME%.zip"
 
-echo download bat
-curl "%BAT_ZIP_URL%" -L --progress-bar -o "%TARGET_DIR%\bat.zip"
-
-echo extract bat
-tar -xf "%TARGET_DIR%\bat.zip" -C "%TARGET_DIR%"
-
-if exist "%TARGET_DIR%\%BAT_DIR_NAME%\bat.exe" (
-  echo move bat.exe to bin
-  move /y "%TARGET_DIR%\%BAT_DIR_NAME%\bat.exe" "%TARGET_DIR%\"
-  echo clean up bat dir
-  rd /s /q "%TARGET_DIR%\%BAT_DIR_NAME%"
-) else (
-  echo Error: bat.exe not found in extracted directory
-  set /a "ERROR_COUNT+=1"
-)
-del "%TARGET_DIR%\bat.zip"
+call :DOWNLOAD_EXTRACT_AND_MOVE "%BAT_ZIP_URL%" "%BAT_DIR_NAME%" "bat"
 echo bat installed successfully
 echo ========================================
 goto:eof
@@ -228,26 +186,23 @@ goto:eof
 :UPDATE_RIPGREP
 :: ========================================
 
-set "RIPGREP_ZIP_URL=https://github.com/BurntSushi/ripgrep/releases/download/%RIPGREP_VER%/ripgrep-%RIPGREP_VER%-x86_64-pc-windows-msvc.zip"
 set "RIPGREP_DIR_NAME=ripgrep-%RIPGREP_VER%-x86_64-pc-windows-msvc"
+set "RIPGREP_ZIP_URL=https://github.com/BurntSushi/ripgrep/releases/download/%RIPGREP_VER%/%RIPGREP_DIR_NAME%.zip"
 
-echo download ripgrep
-curl "%RIPGREP_ZIP_URL%" -L --progress-bar -o "%TARGET_DIR%\ripgrep.zip"
-
-echo extract ripgrep
-tar -xf "%TARGET_DIR%\ripgrep.zip" -C "%TARGET_DIR%"
-
-if exist "%TARGET_DIR%\%RIPGREP_DIR_NAME%\rg.exe" (
-  echo move rg.exe to bin
-  move /y "%TARGET_DIR%\%RIPGREP_DIR_NAME%\rg.exe" "%TARGET_DIR%\"
-  echo clean up ripgrep dir
-  rd /s /q "%TARGET_DIR%\%RIPGREP_DIR_NAME%"
-) else (
-  echo Error: rg.exe not found in extracted directory
-  set /a "ERROR_COUNT+=1"
-)
-del "%TARGET_DIR%\ripgrep.zip"
+call :DOWNLOAD_EXTRACT_AND_MOVE "%RIPGREP_ZIP_URL%" "%RIPGREP_DIR_NAME%" "rg"
 echo ripgrep installed successfully
+echo ========================================
+goto:eof
+
+:: ========================================
+:UPDATE_DELTA
+:: ========================================
+
+set "DELTA_DIR_NAME=delta-%DELTA_VER%-x86_64-pc-windows-msvc"
+set "DELTA_ZIP_URL=https://github.com/dandavison/delta/releases/download/%DELTA_VER%/%DELTA_DIR_NAME%.zip"
+
+call :DOWNLOAD_EXTRACT_AND_MOVE "%DELTA_ZIP_URL%" "%DELTA_DIR_NAME%" "delta"
+echo delta installed successfully
 echo ========================================
 goto:eof
 
@@ -286,6 +241,43 @@ tar -xf "%ZIP_FILE%" -C "%EXTRACT_DIR%" || (
 )
 
 del "%ZIP_FILE%"
+exit /b 0
+
+:DOWNLOAD_EXTRACT_AND_MOVE
+set "URL=%~1"
+set "DIR_NAME=%~2"
+set "EXE_NAME=%~3"
+
+echo download from %URL%
+curl "%URL%" -L --progress-bar -o "%TARGET_DIR%\%EXE_NAME%.zip" || (
+  echo Failed to download: %URL%
+  set /a "ERROR_COUNT+=1"
+  exit /b 1
+)
+
+echo extract to %TARGET_DIR%
+tar -xf "%TARGET_DIR%\%EXE_NAME%.zip" -C "%TARGET_DIR%" || (
+  echo Failed to extract: %EXE_NAME%.zip
+  set /a "ERROR_COUNT+=1"
+  exit /b 1
+)
+
+if exist "%TARGET_DIR%\%DIR_NAME%\%EXE_NAME%.exe" (
+  echo move %EXE_NAME%.exe to bin
+  move /y "%TARGET_DIR%\%DIR_NAME%\%EXE_NAME%.exe" "%TARGET_DIR%\" || (
+    echo Failed to move: %EXE_NAME%.exe
+    set /a "ERROR_COUNT+=1"
+    exit /b 1
+  )
+  echo clean up %DIR_NAME% dir
+  rd /s /q "%TARGET_DIR%\%DIR_NAME%"
+) else (
+  echo Error: %EXE_NAME%.exe not found in extracted directory
+  set /a "ERROR_COUNT+=1"
+  exit /b 1
+)
+
+del "%TARGET_DIR%\%EXE_NAME%.zip"
 exit /b 0
 
 :: ========================================
