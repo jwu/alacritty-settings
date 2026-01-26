@@ -38,6 +38,7 @@ end
 
 config.window_decorations = 'RESIZE'
 config.enable_tab_bar = true
+config.use_fancy_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = false
 -- config.tab_max_width = 16
 
@@ -77,6 +78,7 @@ config.colors = {
     },
     inactive_tab_edge = '#282c34',
   },
+
   -- NOTE: We only change Color 8 (use neovim OneDark Comment Color),
   -- others keep OneHalfDark's colors
   brights = {
@@ -133,8 +135,6 @@ config.max_fps = 60
 ----------------------------------------------------------------------
 
 config.automatically_reload_config = true
-config.enable_tab_bar = true
-config.use_fancy_tab_bar = true
 config.window_close_confirmation = 'NeverPrompt'
 
 ----------------------------------------------------------------------
