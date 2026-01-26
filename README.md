@@ -194,11 +194,12 @@
   - [zellij](https://zellij.dev/)
   - Fonts
     - Coding, Terminal
-    - [nerdfonts](https://www.nerdfonts.com/)
+      - [nerdfonts](https://www.nerdfonts.com/)
     - UI Interface
-    - Inter
+      - [Inter](https://rsms.me/inter/)
     - Chinese Fonts
-    - TODO
+      - Microsoft YaHei
+      - PingFang SC
 - Package Management
   - [uv](https://github.com/astral-sh/uv)
   - [bun](https://bun.com/)
