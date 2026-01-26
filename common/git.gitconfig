@@ -1,5 +1,11 @@
+[user]
+	email = karasaya@gmail.com
+	name = Johnny Wu
+[init]
+	defaultBranch = main
 [core]
   pager = delta
+	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 [interactive]
   diffFilter = delta --color-only
 [delta]
@@ -7,9 +13,4 @@
   light = false
   line-numbers = true
   side-by-side = true
-  syntax-theme = Dracula
-[user]
-	email = karasaya@gmail.com
-	name = Johnny Wu
-[core]
-	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+  syntax-theme = OneHalfDark

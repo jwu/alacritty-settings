@@ -162,7 +162,7 @@ if WINDOWS() then
 
   vim.opt.guifont = 'FiraMono Nerd Font,Microsoft YaHei Mono:h12'
 elseif OSX() then
-  vim.opt.guifont = 'FiraMono Nerd Font,PingFang SC:h16.5'
+  vim.opt.guifont = 'FiraMono Nerd Font,PingFang SC:h16'
 else
   vim.opt.guifont = 'FiraMono Nerd Font:h12'
 end
@@ -967,7 +967,7 @@ require('lazy').setup({
     }
   },
 
-  -- TODO: config it
+  -- TODO: some usefule plugin
   -- {
   --   'RRethy/vim-illuminate',
   --   config = function()
@@ -975,6 +975,9 @@ require('lazy').setup({
   --       delay = 100,
   --     }
   --   end,
+  -- },
+  -- {
+  --   'kevinhwang91/nvim-ufo',
   -- },
 
   ------------------------------

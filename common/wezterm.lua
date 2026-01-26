@@ -3,7 +3,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 local default_cwd = '~'
-local font_size = 16.5
+local font_size = 16
 local mod_key = 'CMD'
 local mod_key_2 = 'CMD|SHIFT'
 local font_en = 'FiraMono Nerd Font'
@@ -13,7 +13,7 @@ local ls_colors = nil
 
 if wezterm.target_triple:find('windows') then
   default_cwd = os.getenv('USERPROFILE') .. '/bin'
-  font_size = 12.5
+  font_size = 12
   mod_key = 'CTRL'
   mod_key_2 = 'CTRL|SHIFT'
   font_zh = 'Microsoft YaHei'
@@ -44,19 +44,38 @@ config.hide_tab_bar_if_only_one_tab = false
 -- Colors
 config.color_scheme = 'OneHalfDark'
 config.window_frame = {
-  active_titlebar_bg = '#222222',
-  inactive_titlebar_bg = '#222222',
+  font = wezterm.font { family = 'Roboto', weight = 'Bold' },
+  font_size = 14.0,
+  active_titlebar_bg = '#282c34',
+  inactive_titlebar_bg = '#282c34',
 }
 config.colors = {
   tab_bar = {
     active_tab = {
-      bg_color = '#2b2042',
-      fg_color = '#c0c0c0',
-      intensity = 'Normal',
+      bg_color = '#c678dd',
+      fg_color = '#282c34',
+      intensity = 'Bold',
       underline = 'None',
       italic = false,
       strikethrough = false,
     },
+    inactive_tab = {
+      bg_color = '#1b1032',
+      fg_color = '#606060',
+    },
+    inactive_tab_hover = {
+      bg_color = '#3e2e53',
+      fg_color = '#808080',
+    },
+    new_tab = {
+      bg_color = '#1b1032',
+      fg_color = '#606060',
+    },
+    new_tab_hover = {
+      bg_color = '#c678dd',
+      fg_color = '#282c34',
+    },
+    inactive_tab_edge = '#282c34',
   },
   -- NOTE: We only change Color 8 (use neovim OneDark Comment Color),
   -- others keep OneHalfDark's colors
@@ -71,6 +90,35 @@ config.colors = {
     '#dcdfe4', -- Color 15: Bright White
   }
 }
+config.inactive_pane_hsb = {
+  saturation = 1.0,
+  brightness = 0.7,
+}
+
+wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
+  local pane = tab.active_pane
+  local cwd_uri = pane.current_working_dir
+  local title = ''
+
+  if cwd_uri then
+    local cwd_path = cwd_uri.file_path
+    local home = wezterm.home_dir
+
+    if cwd_path == home then
+      title = "~"
+    elseif string.find(cwd_path, home, 1, true) == 1 then
+      title = "~" .. string.sub(cwd_path, #home + 1)
+    else
+      title = cwd_path
+    end
+  else
+    title = tab.active_pane.title
+  end
+
+  return {
+    { Text = ' ' .. title .. ' ' },
+  }
+end)
 
 ----------------------------------------------------------------------
 -- Rendering
