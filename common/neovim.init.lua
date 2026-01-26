@@ -160,10 +160,9 @@ if WINDOWS() then
     vim.g.neovide_scroll_animation_far_lines = 0.3
   end
 
-  vim.opt.guifont = 'FiraMono Nerd Font:h12'
-  vim.opt.guifontwide = 'Microsoft YaHei Mono:h12'
+  vim.opt.guifont = 'FiraMono Nerd Font,Microsoft YaHei Mono:h12'
 elseif OSX() then
-  vim.opt.guifont = 'FiraMono Nerd Font:h16'
+  vim.opt.guifont = 'FiraMono Nerd Font,PingFang SC:h16.5'
 else
   vim.opt.guifont = 'FiraMono Nerd Font:h12'
 end
@@ -1002,17 +1001,31 @@ require('lazy').setup({
         'diff', 'query',
       }
 
+      local indent_blacklist = {
+        c = true,
+        cpp = true,
+        python = true,
+        ruby = true,
+        lua = true,
+        yaml = true,
+      }
+
       vim.api.nvim_create_autocmd('FileType', {
         callback = function()
           local ok, _ = pcall(vim.treesitter.start)
 
+          -- if we have the parser for the target language
           if ok then
             vim.opt_local.foldmethod = 'expr'
             vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-            vim.opt_local.foldlevel = 9999
+            vim.opt_local.foldenable = false
             vim.opt_local.foldtext = ''
+            vim.opt_local.foldlevel = 9999
 
-            vim.bo.indentexpr = 'v:lua.vim.treesitter.indent.get()'
+            local ft = vim.bo.filetype
+            if not indent_blacklist[ft] then
+              vim.bo.indentexpr = 'v:lua.vim.treesitter.indent.get()'
+            end
           end
         end,
       })
@@ -1236,50 +1249,39 @@ require('lazy').setup({
       })
       vim.lsp.config('lua_ls', {
         capabilities = capabilities,
-        on_init = function(client)
-          if client.workspace_folders then
-            local path = client.workspace_folders[1].name
-            if
-              path ~= vim.fn.stdpath('config')
-              and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
-              then
-                return
-              end
-            end
-
-            client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-              runtime = {
-                -- Tell the language server which version of Lua you're using (most
-                -- likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-                -- Tell the language server how to find Lua modules same way as Neovim
-                -- (see `:h lua-module-load`)
-                path = {
-                  'lua/?.lua',
-                  'lua/?/init.lua',
-                },
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = {
+                'vim'
               },
-              -- Make the server aware of Neovim runtime files
-              workspace = {
-                checkThirdParty = false,
-                library = {
-                  vim.env.VIMRUNTIME
-                  -- Depending on the usage, you might want to add additional paths
-                  -- here.
-                  -- '${3rd}/luv/library'
-                  -- '${3rd}/busted/library'
-                }
+              disable = {
+                'missing-fields'
               }
-            })
-          end,
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = {'vim'},
-                disable = {'missing-fields'}
+            },
+            runtime = {
+              -- Tell the language server which version of Lua you're using (most
+              -- likely LuaJIT in the case of Neovim)
+              version = 'LuaJIT',
+              -- Tell the language server how to find Lua modules same way as Neovim
+              -- (see `:h lua-module-load`)
+              path = {
+                'lua/?.lua',
+                'lua/?/init.lua',
               },
+            },
+            -- Make the server aware of Neovim runtime files
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                vim.env.VIMRUNTIME
+                -- Depending on the usage, you might want to add additional paths here.
+                -- '${3rd}/luv/library'
+                -- '${3rd}/busted/library'
+              }
             }
           }
+        }
       })
 
       -- Use LspAttach autocommand to only map the following keys

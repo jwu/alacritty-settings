@@ -189,10 +189,16 @@
       - [clink-zoxide](https://github.com/shunsambongi/clink-zoxide)
     - [git for windows](https://github.com/git-for-windows/git)
 - Appearance
-  - [nerdfonts](https://www.nerdfonts.com/)
   - [Dracula Theme](https://draculatheme.com/)
   - [starship](https://starship.rs/)
   - [zellij](https://zellij.dev/)
+  - Fonts
+    - Coding, Terminal
+    - [nerdfonts](https://www.nerdfonts.com/)
+    - UI Interface
+    - Inter
+    - Chinese Fonts
+    - TODO
 - Package Management
   - [uv](https://github.com/astral-sh/uv)
   - [bun](https://bun.com/)

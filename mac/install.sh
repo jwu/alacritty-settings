@@ -33,6 +33,7 @@ PACKAGES=(
     "lsd"
     "fd"
     "bat"
+    "delta"
 )
 
 CASKS=(
