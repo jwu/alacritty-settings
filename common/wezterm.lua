@@ -2,8 +2,10 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 
+local is_windows = false
 local default_cwd = '~'
 local font_size = 16
+local tab_font_size = 14
 local mod_key = 'CMD'
 local mod_key_2 = 'CMD|SHIFT'
 local font_en = 'FiraMono Nerd Font'
@@ -12,8 +14,10 @@ local front_end = 'WebGpu'
 local ls_colors = nil
 
 if wezterm.target_triple:find('windows') then
+  is_windows = true
   default_cwd = os.getenv('USERPROFILE') .. '/bin'
   font_size = 12
+  tab_font_size = 10
   mod_key = 'CTRL'
   mod_key_2 = 'CTRL|SHIFT'
   font_zh = 'Microsoft YaHei'
@@ -46,7 +50,7 @@ config.hide_tab_bar_if_only_one_tab = false
 config.color_scheme = 'OneHalfDark'
 config.window_frame = {
   font = wezterm.font { family = 'Roboto', weight = 'Bold' },
-  font_size = 14.0,
+  font_size = tab_font_size,
   active_titlebar_bg = '#282c34',
   inactive_titlebar_bg = '#282c34',
 }
@@ -112,6 +116,11 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
   if cwd_uri then
     local cwd_path = cwd_uri.file_path
     local home = wezterm.home_dir
+
+    if is_windows then
+      cwd_path = cwd_path:gsub('^/([A-Za-z]:)', '%1')
+      cwd_path = cwd_path:gsub('/', '\\')
+    end
 
     if cwd_path == home then
       title = "~"
