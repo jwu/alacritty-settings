@@ -52,6 +52,7 @@ config.window_frame = {
 }
 config.colors = {
   tab_bar = {
+    -- active tab
     active_tab = {
       bg_color = '#c678dd',
       fg_color = '#282c34',
@@ -60,23 +61,29 @@ config.colors = {
       italic = false,
       strikethrough = false,
     },
+
+    -- inactive tab
     inactive_tab = {
-      bg_color = '#1b1032',
+      bg_color = '#282c34', -- '#1b1032',
       fg_color = '#606060',
     },
     inactive_tab_hover = {
       bg_color = '#3e2e53',
       fg_color = '#808080',
     },
+
+    -- new tab
     new_tab = {
-      bg_color = '#1b1032',
-      fg_color = '#606060',
+      bg_color = '#606060',
+      fg_color = '#282c34',
     },
     new_tab_hover = {
       bg_color = '#c678dd',
       fg_color = '#282c34',
     },
-    inactive_tab_edge = '#282c34',
+
+    -- separator
+    inactive_tab_edge = '#606060',
   },
 
   -- NOTE: We only change Color 8 (use neovim OneDark Comment Color),
