@@ -146,7 +146,7 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
       title = cwd_path
     end
   else
-    title = tab.active_pane.title
+    title = pane.title
   end
 
   return {

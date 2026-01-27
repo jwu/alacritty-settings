@@ -3,7 +3,7 @@
 
 # Don't print a new line at the start of the prompt
 format = """
-$directory$git_branch$git_commit$git_status
+$username$hostname$directory$git_branch$git_commit$git_status
 $character"""
 
 scan_timeout = 100
@@ -13,6 +13,19 @@ add_newline = false
 [character]
 success_symbol = "[❯](bold #808080)"
 error_symbol = "[❯](bold red)"
+
+[username]
+show_always = false
+style_user = "bold red"
+style_root = "bold red"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = true
+disabled = false
+trim_at = "."
+style = "bold green"
+format = "@[$hostname]($style) "
 
 [directory]
 truncation_length = 100
