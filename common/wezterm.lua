@@ -40,7 +40,20 @@ end
 -- Appearance
 ----------------------------------------------------------------------
 
+-- Window
 config.window_decorations = 'RESIZE'
+config.window_background_opacity = 0.95
+config.window_padding = {
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0,
+}
+config.adjust_window_size_when_changing_font_size = false
+-- config.initial_cols = 80
+-- config.initial_rows = 40
+
+-- Tab Bar
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = false
@@ -155,22 +168,6 @@ config.max_fps = 60
 
 config.automatically_reload_config = true
 config.window_close_confirmation = 'NeverPrompt'
-
-----------------------------------------------------------------------
--- Window
-----------------------------------------------------------------------
-
-config.window_decorations = 'RESIZE' -- Alacritty 的 full
-config.window_background_opacity = 0.95
-config.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0,
-}
-config.adjust_window_size_when_changing_font_size = false
-config.initial_cols = nil
-config.initial_rows = nil
 
 ----------------------------------------------------------------------
 -- Font
