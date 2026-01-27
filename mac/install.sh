@@ -40,7 +40,6 @@ CASKS=(
     "wezterm"
     "alacritty"
     "neovide"
-    "zed"
     "font-fira-mono-nerd-font"
 )
 
@@ -142,12 +141,6 @@ echo "Configuring Omnisharp..."
 mkdir -p "$HOME/.omnisharp"
 backup_file "$HOME/.omnisharp/omnisharp.json"
 cp "$ROOT_DIR/common/omnisharp.json" "$HOME/.omnisharp/omnisharp.json"
-
-# Zed
-echo "Configuring Zed..."
-mkdir -p "$HOME/.config/zed"
-backup_file "$HOME/.config/zed/settings.json"
-cp "$ROOT_DIR/common/zed.settings.json" "$HOME/.config/zed/settings.json"
 
 # Starship
 echo "Configuring Starship..."

@@ -89,17 +89,6 @@ if not exist "%USERPROFILE%\.omnisharp" (
 :: copy omnisharp.json
 copy /Y "%MY_ROOT%\common\omnisharp.json" "%USERPROFILE%\.omnisharp\omnisharp.json"
 
-:: config zed
-:: ========================================
-
-:: create zed directory
-if not exist "%APPDATA%\zed" (
-  mkdir "%APPDATA%\zed"
-)
-
-:: copy zed settings
-copy /Y "%MY_ROOT%\common\zed.settings.json" "%APPDATA%\zed\settings.json"
-
 :: config wezterm
 :: ========================================
 
