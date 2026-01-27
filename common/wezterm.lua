@@ -101,7 +101,10 @@ config.colors = {
     '#c678dd', -- Color 13: Bright Magenta
     '#56b6c2', -- Color 14: Bright Cyan
     '#dcdfe4', -- Color 15: Bright White
-  }
+  },
+
+  -- split
+  split = '#606060',
 }
 config.inactive_pane_hsb = {
   saturation = 1.0,
