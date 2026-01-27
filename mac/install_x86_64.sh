@@ -66,7 +66,7 @@ fi
 
 if ! command -v lsd &> /dev/null; then
   echo "Installing lsd..."
-  version="1.1.5"
+  version="v1.2.0"
   url="https://github.com/lsd-rs/lsd/releases/download/${version}/lsd-${version}-x86_64-apple-darwin.tar.gz"
   download_and_install "$url" "lsd"
 else
@@ -143,12 +143,11 @@ install_cask() {
 }
 
 install_cask "WezTerm.app" "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-macos-x86_64.tar.gz"
-install_cask "Alacritty.app" "https://github.com/alacritty/alacritty/releases/download/v0.13.4/Alacritty-v0.13.4-x86_64-apple-darwin.tar.gz"
 
 if [ ! -d "/Applications/Neovide.app" ]; then
   echo "  Installing Neovide..."
-  version="0.13.0"
-  url="https://github.com/neovide/neovide/releases/download/${version}/Neovide-macos-x86_64.dmg"
+  version="0.15.2"
+  url="https://github.com/neovide/neovide/releases/download/${version}/Neovide-x86_64-apple-darwin.dmg"
   temp_dir=$(mktemp -d)
   dmg="$temp_dir/neovide.dmg"
   curl -fsSL "$url" -o "$dmg"
@@ -211,11 +210,6 @@ echo "Configuring WezTerm..."
 backup_file "$HOME/.wezterm.lua"
 cp "$ROOT_DIR/common/wezterm.lua" "$HOME/.wezterm.lua"
 
-echo "Configuring Alacritty..."
-mkdir -p "$HOME/.config/alacritty"
-backup_file "$HOME/.config/alacritty/alacritty.toml"
-cp "$SCRIPT_DIR/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
-
 echo "Configuring LSD..."
 mkdir -p "$HOME/.config/lsd"
 backup_file "$HOME/.config/lsd/config.yaml"
@@ -257,5 +251,5 @@ echo "    Make sure to add ~/.local/bin to your PATH:"
 echo "      echo 'export PATH=\"~/.local/bin:\$PATH\"' >> ~/.zshrc"
 echo ""
 echo "    Installed CLI tools: starship, zoxide, neovim, fzf, lsd, fd, bat, delta, ripgrep"
-echo "    Installed GUI apps: WezTerm, Alacritty, Neovide"
+echo "    Installed GUI apps: WezTerm, Neovide"
 echo "    Installed fonts: FiraCode"
