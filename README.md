@@ -134,6 +134,87 @@
    - **Starship**: 复制 `linux/starship.toml` 到 `~/.config/starship.toml`。
    - **Neovim**: 复制 `common/neovim.init.lua` 到 `~/.config/nvim/init.lua`。
 
+---
+
+## 开发环境配置
+
+### 自动配置 (推荐)
+
+用于 macOS 的开发环境自动配置脚本，会安装以下开发工具和运行时：
+
+1. 打开终端。
+2. 进入 `mac` 目录：
+   ```bash
+   cd ~/bin/settings/mac
+   ```
+3. 运行开发环境配置脚本：
+   ```bash
+   ./setup_dev.sh
+   ```
+
+**安装的工具包括：**
+- **Xcode Command Line Tools** - Apple 官方编译工具链
+- **Git** - 版本控制工具
+- **Rust (rustup)** - Rust 编程语言及工具链
+- **uv** - Python 快速包管理器和安装器
+- **Bun** - 快速的 JavaScript 运行时和包管理器
+- **Zig** - Zig 编程语言
+- **tree-sitter-cli** - 解析器生成工具
+- **Node.js (LTS)** - JavaScript 运行时（通过 NVM）
+
+### 手动配置
+
+如果你更喜欢手动安装这些工具，请按照以下步骤操作：
+
+#### 1. 安装 Xcode Command Line Tools
+```bash
+xcode-select --install
+```
+等待安装对话框完成。
+
+#### 2. 安装 Git (如果尚未安装)
+```bash
+brew install git
+```
+
+#### 3. 安装 Rust
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source "$HOME/.cargo/env"
+```
+
+#### 4. 安装 uv (Python 工具)
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+#### 5. 安装 Bun
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
+#### 6. 安装 Zig
+```bash
+brew install zig
+```
+
+#### 7. 安装 tree-sitter-cli
+```bash
+cargo install tree-sitter-cli
+```
+
+#### 8. 安装 Node.js (通过 NVM)
+```bash
+export NVM_DIR="$HOME/.nvm"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm install --lts
+nvm use --lts
+nvm alias default 'lts/*'
+```
+
+---
+
 ## Neovim + NeoVide 手动安装手册
 
 ### Windows
