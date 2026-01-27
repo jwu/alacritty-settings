@@ -53,7 +53,33 @@ echo.
 echo ^>^>^> Installing Bun...
 powershell -Command "irm bun.sh/install.ps1 | iex"
 
-:: 6. NVM for Windows
+:: 6. Zig
+echo.
+echo ^>^>^> Installing Zig...
+where zig >nul 2>&1
+if %errorlevel% neq 0 (
+    winget install -e --id zig.zig
+) else (
+    echo Zig is already installed.
+)
+
+:: 7. tree-sitter-cli
+echo.
+echo ^>^>^> Installing tree-sitter-cli...
+where tree-sitter >nul 2>&1
+if %errorlevel% neq 0 (
+    where cargo >nul 2>&1
+    if %errorlevel% neq 0 (
+        echo Error: Cargo/Rust not installed. Please install Rust first.
+        pause
+        exit /b 1
+    )
+    cargo install tree-sitter-cli
+) else (
+    echo tree-sitter-cli is already installed.
+)
+
+:: 8. NVM for Windows
 echo.
 echo ^>^>^> Installing NVM for Windows...
 where nvm >nul 2>&1
@@ -68,6 +94,7 @@ if %errorlevel% neq 0 (
     echo NVM for Windows is already installed.
 )
 
+:: 9. Done
 echo.
 echo ^>^>^> Development Setup Complete!
 echo Please restart your terminal to ensure all PATH changes take effect.
