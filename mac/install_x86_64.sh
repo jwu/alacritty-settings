@@ -102,7 +102,7 @@ fi
 
 if ! command -v rg &> /dev/null; then
   echo "Installing ripgrep..."
-  version="14.1.1"
+  version="15.1.0"
   url="https://github.com/BurntSushi/ripgrep/releases/download/${version}/ripgrep-${version}-x86_64-apple-darwin.tar.gz"
   download_and_install "$url" "rg"
 else
@@ -111,7 +111,7 @@ fi
 
 if ! command -v nvim &> /dev/null; then
   echo "Installing neovim..."
-  version="v0.10.2"
+  version="v0.11.6"
   url="https://github.com/neovim/neovim/releases/download/${version}/nvim-macos-x86_64.tar.gz"
   temp_dir=$(mktemp -d)
   curl -fsSL "$url" -o "$temp_dir/nvim.tar.gz"
@@ -142,7 +142,7 @@ install_cask() {
   fi
 }
 
-install_cask "WezTerm.app" "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-macos-x86_64.tar.gz"
+install_cask "WezTerm.app" "https://github.com/wezterm/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-macos-20240203-110809-5046fc22.zip"
 
 if [ ! -d "/Applications/Neovide.app" ]; then
   echo "  Installing Neovide..."
