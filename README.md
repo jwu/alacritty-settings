@@ -208,6 +208,7 @@
   - [rg](https://github.com/BurntSushi/ripgrep)
   - [z](https://github.com/ajeetdsouza/zoxide)
   - [fzf](https://github.com/junegunn/fzf)
+    - [skim](https://github.com/lotabout/skim)
   - [fd](https://github.com/sharkdp/fd)
   - [bat](https://github.com/sharkdp/bat)
   - [lsd](https://github.com/Peltoche/lsd)
@@ -245,11 +246,8 @@
   - [s](https://github.com/zquestz/s)
   - [deno](https://github.com/denoland/deno)
   - [glow](https://github.com/charmbracelet/glow)
-- utils (needs package installer)
   - [fanyi](https://github.com/afc163/fanyi)
-- utils (`*nix` only)
-  - [sk](https://github.com/lotabout/skim)
-- Shell
+- utils (shell)
   - zsh
     - [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
