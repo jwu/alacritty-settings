@@ -66,8 +66,8 @@ fi
 
 if ! command -v lsd &> /dev/null; then
   echo "Installing lsd..."
-  local version="1.1.5"
-  local url="https://github.com/lsd-rs/lsd/releases/download/${version}/lsd-${version}-x86_64-apple-darwin.tar.gz"
+  version="1.1.5"
+  url="https://github.com/lsd-rs/lsd/releases/download/${version}/lsd-${version}-x86_64-apple-darwin.tar.gz"
   download_and_install "$url" "lsd"
 else
   echo "  lsd already installed"
@@ -75,8 +75,8 @@ fi
 
 if ! command -v fd &> /dev/null; then
   echo "Installing fd..."
-  local version="10.2.0"
-  local url="https://github.com/sharkdp/fd/releases/download/v${version}/fd-v${version}-x86_64-apple-darwin.tar.gz"
+  version="10.2.0"
+  url="https://github.com/sharkdp/fd/releases/download/v${version}/fd-v${version}-x86_64-apple-darwin.tar.gz"
   download_and_install "$url" "fd"
 else
   echo "  fd already installed"
@@ -84,8 +84,8 @@ fi
 
 if ! command -v bat &> /dev/null; then
   echo "Installing bat..."
-  local version="0.24.0"
-  local url="https://github.com/sharkdp/bat/releases/download/v${version}/bat-v${version}-x86_64-apple-darwin.tar.gz"
+  version="0.24.0"
+  url="https://github.com/sharkdp/bat/releases/download/v${version}/bat-v${version}-x86_64-apple-darwin.tar.gz"
   download_and_install "$url" "bat"
 else
   echo "  bat already installed"
@@ -93,8 +93,8 @@ fi
 
 if ! command -v delta &> /dev/null; then
   echo "Installing delta..."
-  local version="0.18.2"
-  local url="https://github.com/dandavison/delta/releases/download/${version}/delta-${version}-x86_64-apple-darwin.tar.gz"
+  version="0.18.2"
+  url="https://github.com/dandavison/delta/releases/download/${version}/delta-${version}-x86_64-apple-darwin.tar.gz"
   download_and_install "$url" "delta"
 else
   echo "  delta already installed"
@@ -102,8 +102,8 @@ fi
 
 if ! command -v rg &> /dev/null; then
   echo "Installing ripgrep..."
-  local version="14.1.1"
-  local url="https://github.com/BurntSushi/ripgrep/releases/download/${version}/ripgrep-${version}-x86_64-apple-darwin.tar.gz"
+  version="14.1.1"
+  url="https://github.com/BurntSushi/ripgrep/releases/download/${version}/ripgrep-${version}-x86_64-apple-darwin.tar.gz"
   download_and_install "$url" "rg"
 else
   echo "  ripgrep already installed"
@@ -111,9 +111,9 @@ fi
 
 if ! command -v nvim &> /dev/null; then
   echo "Installing neovim..."
-  local version="v0.10.2"
-  local url="https://github.com/neovim/neovim/releases/download/${version}/nvim-macos-x86_64.tar.gz"
-  local temp_dir=$(mktemp -d)
+  version="v0.10.2"
+  url="https://github.com/neovim/neovim/releases/download/${version}/nvim-macos-x86_64.tar.gz"
+  temp_dir=$(mktemp -d)
   curl -fsSL "$url" -o "$temp_dir/nvim.tar.gz"
   tar -xzf "$temp_dir/nvim.tar.gz" -C "$temp_dir"
   cp "$temp_dir/nvim-macos/bin/nvim" "$BIN_DIR/nvim"
@@ -147,10 +147,10 @@ install_cask "Alacritty.app" "https://github.com/alacritty/alacritty/releases/do
 
 if [ ! -d "/Applications/Neovide.app" ]; then
   echo "  Installing Neovide..."
-  local version="0.13.0"
-  local url="https://github.com/neovide/neovide/releases/download/${version}/Neovide-macos-x86_64.dmg"
-  local temp_dir=$(mktemp -d)
-  local dmg="$temp_dir/neovide.dmg"
+  version="0.13.0"
+  url="https://github.com/neovide/neovide/releases/download/${version}/Neovide-macos-x86_64.dmg"
+  temp_dir=$(mktemp -d)
+  dmg="$temp_dir/neovide.dmg"
   curl -fsSL "$url" -o "$dmg"
   hdiutil attach "$dmg" -mountpoint /Volumes/neovide -nobrowse
   cp -r "/Volumes/Neovide.app" /Applications/
