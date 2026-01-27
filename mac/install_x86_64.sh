@@ -129,17 +129,18 @@ fi
 
 export PATH="$BIN_DIR:$PATH"
 
-echo ">>> Installing fonts..."
+echo ">>> Installing FiraMono Nerd Font..."
 
+FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraMono.zip"
 FONT_DIR="$HOME/Library/Fonts"
-mkdir -p "$FONT_DIR"
+TEMP_DIR=$(mktemp -d)
 
-if [ ! -f "$FONT_DIR/Fira Code Regular Nerd Font Complete.otf" ]; then
-  echo "  Installing FiraCode Nerd Font..."
-  curl -fsSL "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.otf" -o "$FONT_DIR/Fira Code Regular Nerd Font Complete.otf"
-else
-  echo "  FiraCode Nerd Font already installed"
-fi
+curl -fsSL "$FONT_URL" -o "$TEMP_DIR/FiraMono.zip"
+unzip -q "$TEMP_DIR/FiraMono.zip" -d "$TEMP_DIR"
+cp "$TEMP_DIR"/*.otf "$FONT_DIR/" 2>/dev/null || true
+rm -rf "$TEMP_DIR"
+
+echo "  FiraMono Nerd Font installed"
 
 echo ">>> Setting up Oh My Zsh..."
 
@@ -159,13 +160,19 @@ else
 fi
 
 echo ">>> Installing Dracula Zsh Theme..."
-if [ ! -d "$ZSH_CUSTOM/themes/dracula" ]; then
-  git clone https://github.com/dracula/zsh.git "$ZSH_CUSTOM/themes/dracula"
-else
-  cd "$ZSH_CUSTOM/themes/dracula" && git pull && cd - > /dev/null
-fi
+OH_MY_ZSH="$HOME/.oh-my-zsh"
+TEMP_DIR=$(mktemp -d)
 
-cp "$ZSH_CUSTOM/themes/dracula/dracula.zsh-theme" "$ZSH_CUSTOM/themes/dracula.zsh-theme"
+if [ ! -f "$OH_MY_ZSH/themes/dracula.zsh-theme" ]; then
+  curl -fsSL "https://github.com/dracula/zsh/archive/master.zip" -o "$TEMP_DIR/dracula.zip"
+  unzip -q "$TEMP_DIR/dracula.zip" -d "$TEMP_DIR"
+  cp "$TEMP_DIR/zsh-master/dracula.zsh-theme" "$OH_MY_ZSH/themes/dracula.zsh-theme"
+  cp -r "$TEMP_DIR/zsh-master/lib" "$OH_MY_ZSH/themes/lib"
+  rm -rf "$TEMP_DIR"
+  echo "  Dracula Zsh Theme installed"
+else
+  echo "  Dracula Zsh Theme already installed"
+fi
 
 backup_file() {
   if [ -f "$1" ]; then
@@ -221,5 +228,6 @@ echo "    Make sure to add ~/.local/bin to your PATH:"
 echo "      echo 'export PATH=\"~/.local/bin:\$PATH\"' >> ~/.zshrc"
 echo ""
 echo "    Installed CLI tools: starship, zoxide, neovim, fzf, lsd, fd, bat, delta, ripgrep"
-echo "    Installed GUI apps: WezTerm, Neovide"
-echo "    Installed fonts: FiraCode"
+echo "    Installed Fonts: FiraCode"
+echo "    Next Step:"
+echo "        Please Manually Install GUI apps: WezTerm, Neovide"

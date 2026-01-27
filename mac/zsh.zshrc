@@ -1,4 +1,4 @@
-export PATH=/opt/homebrew/bin:~/bin:/usr/local/bin:$PATH
+export PATH=/opt/homebrew/bin:~/bin:~/.local/bin:/usr/local/bin:$PATH
 export ZSH=~/.oh-my-zsh
 export EDITOR=nvim
 export LANG=en_US.UTF-8
@@ -11,7 +11,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
@@ -31,8 +31,6 @@ export PATH=/Users/zyq/.opencode/bin:$PATH
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-. "$HOME/.local/bin/env"
 
 # fzf
 source <(fzf --zsh)
