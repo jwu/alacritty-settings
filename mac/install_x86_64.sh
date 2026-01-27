@@ -129,40 +129,6 @@ fi
 
 export PATH="$BIN_DIR:$PATH"
 
-echo ">>> Installing GUI apps..."
-
-install_cask() {
-  local name=$1
-  local url=$2
-
-  if [ ! -d "/Applications/$name.app" ]; then
-    echo "  Installing $name..."
-    local temp_dir=$(mktemp -d)
-    curl -fsSL "$url" -o "$temp_dir/download.zip"
-    unzip -q "$temp_dir/download.zip" -d /Applications/
-    rm -rf "$temp_dir"
-  else
-    echo "  $name already installed"
-  fi
-}
-
-install_cask "WezTerm.app" "https://github.com/wezterm/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-macos-20240203-110809-5046fc22.zip"
-
-if [ ! -d "/Applications/Neovide.app" ]; then
-  echo "  Installing Neovide..."
-  version="0.15.2"
-  url="https://github.com/neovide/neovide/releases/download/${version}/Neovide-x86_64-apple-darwin.dmg"
-  temp_dir=$(mktemp -d)
-  dmg="$temp_dir/neovide.dmg"
-  curl -fsSL "$url" -o "$dmg"
-  hdiutil attach "$dmg" -mountpoint /Volumes/neovide -nobrowse
-  cp -r "/Volumes/Neovide.app" /Applications/
-  hdiutil detach /Volumes/neovide
-  rm -rf "$temp_dir"
-else
-  echo "  Neovide already installed"
-fi
-
 echo ">>> Installing fonts..."
 
 FONT_DIR="$HOME/Library/Fonts"
