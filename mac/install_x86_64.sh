@@ -116,8 +116,12 @@ if ! command -v nvim &> /dev/null; then
   temp_dir=$(mktemp -d)
   curl -fsSL "$url" -o "$temp_dir/nvim.tar.gz"
   tar -xzf "$temp_dir/nvim.tar.gz" -C "$temp_dir"
-  cp "$temp_dir/nvim-macos/bin/nvim" "$BIN_DIR/nvim"
+  cp "$temp_dir/nvim-macos-x86_64/bin/nvim" "$BIN_DIR/nvim"
   chmod +x "$BIN_DIR/nvim"
+  [ ! -d "$HOME/.local/lib" ] && mkdir -p "$HOME/.local/lib"
+  [ ! -d "$HOME/.local/share" ] && mkdir -p "$HOME/.local/share"
+  cp -r "$temp_dir/nvim-macos-x86_64/lib/"* "$HOME/.local/lib/"
+  cp -r "$temp_dir/nvim-macos-x86_64/share/"* "$HOME/.local/share/"
   rm -rf "$temp_dir"
 else
   echo "  neovim already installed"
